@@ -1,0 +1,101 @@
+if we want to communicate with database, the only option that we have is query.
+if we write a query, then we can communicate with db (insert/select/update/delete)
+
+
+
+SQL is a standard language for storing, manipulating and retrieving data in databases.
+
+What is SQL?
+SQL is not a database management system, but it is a query language which is used to store and retrieve the data from a database or in simple words SQL is a language that communicates with databases.
+
+SQL stands for Structured Query Language 
+SQL (Structured Query Language) is used to perform operations on the records stored in the database, such as updating records, inserting records, deleting records, creating and modifying database tables, views, etc.
+
+SQL is not a database system, but it is a query language.
+SQL became a standard of the American National Standards Institute (ANSI) in 1986, and of the International Organization for Standardization (ISO) in 1987
+
+What Can SQL do?
+SQL can execute queries against a database
+SQL can retrieve data from a database
+SQL can insert records in a database
+SQL can update records in a database
+SQL can delete records from a database
+SQL can create new databases
+SQL can create new tables in a database
+SQL can create stored procedures in a database
+SQL can create views in a database
+SQL can set permissions on tables, procedures, and views
+============================================================
+
+To build a web site that shows data from a database, you will need:
+
+An RDBMS database program (i.e. MS Access, SQL Server, MySQL)
+To use a server-side scripting language, like PHP or ASP
+To use SQL to get the data you want
+To use HTML / CSS to style the page
+=================================================================================
+SQL Commands
+
+Types of SQL Commands
+There are five types of SQL commands: DDL, DML, DCL, TCL, and DQL.
+1. Data Definition Language (DDL)
+==>DDL changes the structure of the table like creating a table, droping a table, altering a table, etc.
+==>All the command of DDL are auto-committed that means it permanently save all the changes in the database.
+ Data Definition Language actually consists of the SQL commands that can be used to define the database schema. It simply deals with descriptions of the database schema and is used to create and modify the structure of database objects in the database. DDL is a set of SQL commands used to create, modify, and delete database structures but not data
+
+
+Here are some commands that come under DDL:
+
+CREATE
+ALTER
+DROP
+TRUNCATE
+
+2. Data Manipulation Language
+The SQL commands that deal with the manipulation of data present in the database belong to DML or Data Manipulation Language and this includes most of the SQL statements. It is the component of the SQL statement that controls access to data and to the database. 
+The command of DML is not auto-committed that means it can't permanently save all the changes in the database. They can be rollback.
+Here are some commands that come under DML:
+
+INSERT
+UPDATE
+DELETE
+
+3Data Control Language
+DCL commands are used to grant and take back authority from any database user.
+DCL includes commands such as GRANT and REVOKE which mainly deal with the rights, permissions, and other controls of the database system. 
+
+Here are some commands that come under DCL:
+
+Grant
+Revoke
+==============================================================
+4. Transaction Control Language:
+
+Transactions group a set of tasks into a single execution unit. Each transaction begins with a specific task and ends when all the tasks in the group are successfully completed. If any of the tasks fail, the transaction fails. Therefore, a transaction has only two results: success or failure. Hence, the following TCL commands are used to control the execution of a transaction: 
+TCL commands can only use with DML commands like INSERT, DELETE and UPDATE only.
+These operations are automatically committed in the database that's why they cannot be used while creating tables or dropping them.
+
+Here are some commands that come under TCL:
+
+COMMIT
+ROLLBACK
+SAVEPOINT
+============================================================================================
+5. Data Query Language
+DQL is used to fetch the data from the database.The purpose of the DQL Command is to get some schema relation based on the query passed to it. We can define DQL as follows it is a component of SQL statement that allows getting data from the database and imposing order upon it. It includes the SELECT statement. This command allows getting the data out of the database to perform operations with it.
+
+It uses only one command:
+
+SELECT
+
+
+
+
+
+
+
+
+
+
+
+

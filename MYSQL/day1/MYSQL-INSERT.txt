@@ -1,0 +1,118 @@
+The MySQL INSERT INTO Statement
+
+The INSERT INTO statement is used to insert new records in a table.
+
+It is possible to write the INSERT INTO statement in two ways:
+
+1. Specify both the column names and the values to be inserted:
+INSERT INTO table_name (column1, column2, column3, ...)
+VALUES (value1, value2, value3, ...);
+
+2. If you are adding values for all the columns of the table, you do not need to specify the column names in the SQL query. However, make sure the order of the values is in the same order as the columns in the table. Here, the INSERT INTO syntax would be as follows:
+INSERT INTO table_name
+VALUES (value1, value2, value3, ...); 
+=====================================================================
+
+1)MySQL INSERT INTO table Single Row
+To insert a single record into a table, specify the table name and provide values for each column in the order they appear in the table.
+
+ 2)MySQL INSERT INTO table Multiple Rows
+MySQL allows inserting multiple rows of data in a single query. It is reducing the overhead of executing multiple queries. The syntax is similar to inserting a single row but with multiple sets of values enclosed within parentheses and separated by commas
+
+3)Insert Data Only in Specified Columns
+It is also possible to only insert data in specific columns.
+
+Example:
+--------
+mysql> insert into student values(111, 'Chiranjeevi', 75.34);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into student values
+    -> (112, 'Nagarjuna', 66.45),
+    -> (113, 'Balayya', 44.56);
+Query OK, 2 rows affected (0.02 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+Example:
+--------
+mysql> insert into student(id,name,percentage) values(114,'Venkatesh',45.90);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into student(id,name) values(115,'Pavan Kalyan');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into student(id,percentage) values(115,75.90);
+Query OK, 1 row affected (0.02 sec)
+
+=======================================================================================================
+
+
+First, create a table "People" in the database using fields     id,   name ,  occupation ,  age 
+    1) store single records for all fields
+   2)store multiple records
+   3)store records without giving all fields,
+
+===================================================================
+EXTRA PRACTICE:
+
+
+Example:
+--------
+mysql> insert into emp values(111,'Ramu','Manager','male',10350.0,'2024-01-23');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into emp values(89,'Ramya','Asst.Manager','female',10350.0,'2024-01-24');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into emp values(99,'Prakash','Trainer','male',4350.0,'2020-01-01');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into emp(eid,name,gender,doj)
+    -> values(33,'Kalyan','male','1999-04-22');
+Query OK, 1 row affected (0.02 sec)
+
+Example:
+--------
+mysql> insert into sales values('2020',100,90);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into sales values('2021',120,130);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into sales values('2022',120,120);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into sales values('2023',100,50);
+Query OK, 1 row affected (0.02 sec)
+
+Example:
+--------
+mysql> insert into patients values('AAA','WWW','male','2024-04-29 07:00:34','2024-04-29 19:30:00');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into patients values('BBB','WWW','female','2024-03-29 10:00:34','2024-03-30 06:30:00');
+Query OK, 1 row affected (0.02 sec)
+==================================================================================
+
+
+Assignments
+
+CREATE TABLE tasks (
+   
+  title VARCHAR(255) , 
+  start_date DATE, 
+  due_date DATE, 
+priority INT 
+);
+
+
+1) INSERT INTO tasks(title, priority) 
+VALUES('Learn MySQL INSERT Statement', 1);
+
+2)INSERT INTO tasks(title, start_date, due_date) 
+VALUES ('Insert date into table', '2018-01-09', '2018-09-15');
+
+
+======================================================================
+
+

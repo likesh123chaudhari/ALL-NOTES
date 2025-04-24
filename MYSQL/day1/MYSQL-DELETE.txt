@@ -1,0 +1,62 @@
+The MySQL DELETE Statement
+==>The DELETE statement is used to delete existing records in a table.
+==>The DELETE statement allows you to delete rows from a table and returns the number of deleted rows.
+==>It is a Data Manipulation Language (DML) statement.
+==>we can either delete the entire data in a table using DELETE or else we can also delete only some specific rows from the table.
+==>using delete command ,It is possible to delete all rows in a table without deleting the table. This means that the table structure, attributes, and indexes will be intact.
+==>Once we delete the records using this query, we cannot recover it. Therefore before deleting any records from the table, it is recommended to create a backup of your database. 
+==>If we want to delete all records from a table without knowing the count of deleted rows, we must use the TRUNCATE TABLE statement that gives better performance.
+
+syntax:
+------
+
+delete from <tblName>;
+
+delete from <tblName> where <condition>;
+The WHERE clause specifies which record(s) should be deleted. If you omit the WHERE clause, all records in the table will be deleted!
+
+
+ex 1:delete from student where percentage<=50.0;
+
+ex 2:delete from student
+The following SQL statement deletes all rows in the "student" table, without deleting the table:
+
+====================================================================
+MYSQL TUTORIAL
+ASSIGNMENTS
+
+CREATE TABLE contacts (
+    id INT ,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    email VARCHAR(100) ,
+    phone VARCHAR(20)
+);
+
+1)  delete a single row from the contacts table:
+
+DELETE FROM contacts
+WHERE id = 1;
+
+In this example, the DELETE statement deletes the row with id 1. Since the condition returns only one row, the DELETE statement deleted a single row.The output indicates that one row was deleted.
+===============================================
+2) Delete multiple rows example
+
+DELETE FROM contacts
+WHERE last_name = 'Smith';
+
+Output:
+
+Query OK, 6 rows affected (0.01 sec)
+The output indicates that 6 rows were deleted.
+==============================================
+==============================================
+4)  delete all rows from the contacts table:
+
+DELETE FROM contacts;
+==========================================
+    
+
+
+
+

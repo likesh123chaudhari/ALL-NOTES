@@ -1,0 +1,201 @@
+
+
+https://www.youtube.com/watch?v=7A7GVqdFjmc&list=PL-pVmZZ4aqlmTBPKzZ--p9hMR2xtIhJ9z&index=2
+mysql community download
+
+
+syllabus:
+---------
+01. Introduction to database
+02. Introduction to mysql
+03. Installation of mysql server and workbench
+04. Writing Queries
+05. SQL Commands (DML, DCL, DDL, DTL etc)
+06. Data types
+07. CRUD operations on database (create,activate,delete)
+08. CRUD operations on tables (create, insert, select, update, delete)
+09. Creation of tables.
+10. Insertion of records.
+11. Operators
+12. Selecting records from table & where clause
+13. Updating records in a table.
+14. Deleting records from table.
+15. Alter command
+16. Indexes
+17. Views
+18. Joining tables (union & join)
+19. Sorting data
+20. Grouping data & Having clause
+21. Constrains (not null, unique, default, check, primary key, foreign key)
+22. Functions (predefined functions & Userdefined Functions)
+23. Stored Procedures
+24. Subqueiries
+25. Cursor
+26. Triggers
+27. Trasaction Management
+28. Permission Management
+29. Exception Handling
+30. Import & Exporting data
+==========================================================================
+
+FAQ:What is database?
+==>It is a memory which is used to store data/information
+==>collection of interrelated data(depended on each other)/information
+
+db bank stores information of
+================================================================================
+Limitations of file oriented system:
+
+Data redundancy: 
+==>Same information is stored in different files leads to data redundancy
+==>Data redundancy refers to the duplication of data, lets say we are managing the data of a college where a student is enrolled for two courses, the same student details in such case will be stored twice in 2 different files, which will take more storage than needed. Data redundancy often leads to higher storage costs and poor access time.
+
+==>Data inconsistency:
+ Data redundancy leads to data inconsistency, lets take the same example that we have taken above, a student is enrolled for two courses and we have student address stored twice, now lets say student requests to change his address, if the address is changed at one place and not on all the records then this can lead to data inconsistency.
+
+==>Difficulty inretreiving data:
+retreiving data is very difficult from a file because we need to develop an application program by using high level lang like c,c++,java,.net etc.
+
+==>Data Integrity problem(data validation problems)
+To check data before accepting into file but file management system is not supporting data integrity mechanism .
+   constraint(pk,fk)cannot apply to files.
+
+==>Data Isolation: Because data are scattered in various files, and files may be in different formats, writing new application programs to retrieve the appropriate data is difficult.
+
+==>Atomicity issues: Atomicity of a transaction refers to “All or nothing”, which means either all the operations in a transaction executes or none.
+For example: Let’s say ram transfers 100rs to shyam account. This transaction consists multiple operations such as debit 100rs from  ram's account, credit 100rs to shyam’s account. Like any other device, a computer system can fail lets say it fails after first operation then in that case ram's account would have been debited by 100rs but the amount was not credited to shyam’s account, in such case the rollback of operation should occur to maintain the atomicity of transaction. It is difficult to achieve atomicity in file processing systems.
+
+Data Security: Data should be secured from unauthorised access, for example a student in a college should not be able to see the payroll details of the teachers, such kind of security constraints are difficult to apply in file processing systems.
+==>role based access control security is not provided
+
+==>client server architecture is not supported by file processing system.
+ex:we are searching for train details in IRTCT,  searching for 1 kb data. find the details of particular train.If I used file system,I will get the complete file of entire train data,means I just want to search 1kb of data,but I m getting 25GB data. data is stored in my system,mem req is more, out of that 25GB I have to search data of only 1 kb which is very complex process.
+
+
+Dbms says 25gb data is with server of Indian railways,now user will write a simple query using sql,only 1 kb will come to user,searching is going to fast.memory utilization is efficient.
+
+==>Need to know metadata of the file
+whenever we search the data by using file system we req attributes,i need file name,location,permission.l need metadata of that data first, when i will get that metadata,means the data about the particular file, first i need that data,like we normally access in our system file.I can access that data only when I have it.but in DBMS THERE IS NO LOCATION.
+user dont know where the data is located.
+
+==>Data Indexing:
+accessing the required data from a file is very slow and time taken process because files are not supports indexing mechanism.
+===========================================================================================
+
+
+
+
+FAQ: what user will do with that data?
+==>user can search/access that data,user can do some updates in the data, can insert new data.
+Means user can perform CRUD operations on database. So we need 1 system to perform this crud operation i.e DBMS.
+
+==>DBMS has collection of operations which provides easiness to the users,so user can easily perform the operations in the database i.e insertion,deletion and updation. 
+
+==>A database is an organized collection of related data, so that it can be easily accessed and managed.
+The main purpose of the database is to operate a large amount of information by storing, retrieving, and managing data.
+==>Application: Company Information, banking information.
+====================================================================
+Why do we need Database?
+
+==>Databases are important because they allow organizations to store, organize, and access large amounts of data efficiently and effectively.
+==>A good database is crucial to any company or organization. This is because the database stores all the important details about  the company such as employee records, transactional records, salary details etc.
+==>Manages large amounts of data
+     A database stores and manages a large amount of data on a daily basis. This would not be possible using any other tool such as a spreadsheet as they would simply not work.
+ 
+ ==>Security of data
+ Databases have various methods to ensure security of data. There are user logins required before accessing a database and various access specifiers. These allow only authorised users to access the database.
+ ================================================================
+===========================================================================
+========================================================
+
+***************************************************************************************
+DBMS:
+
+==>DBMS stands for Database Management System. We can break it like this DBMS = Database + Management System. Database is a collection of related data and Management System is a set of programs to store,manipulate ,manage and retrieve those data in a database.
+==>Database management system is a software which is used to manage the database. For example: MySQL, Oracle, etc are a very popular commercial database which is used in different applications.
+==>DBMS provides an interface to perform various operations like database creation, storing data in it, updating data, creating a table in the database and a lot more.
+==>It provides protection and security to the database. In the case of multiple users, it also maintains data consistency.
+==>DBMS is a software that is used to manage the data. Some of the popular DBMS softwares are: MySQL given by microsoft,  Db2 given by IBM, Oracle, PostgreSQL etc.
+
+==>The main purpose of database systems is to manage the data.
+ Consider a university that keeps the data of students, teachers, courses, books etc. To manage this data we need to store this data somewhere where we can add new data, delete unused data, update outdated data, retrieve data, to perform these operations on data we need a Database management system that allows us to store the data in such a way so that all these operations can be performed on the data efficiently.
+===================================================================
+What is the need of DBMS?
+1)Database systems are basically developed for large amount of data. 
+2)A Data Base Management System is a system software for easy, efficient and reliable data processing and management. It can be used for:
+
+Creation of a database.
+Retrieval of information from the database.
+Updating the database.
+Managing a database.
+One of the primary needs for a DBMS is data organization and management.
+ DBMSs allow data to be stored in a structured manner, which helps in easier retrieval and analysis. A well-designed database schema enables faster access to information, reducing the time required to find relevant data. A DBMS also provides features like indexing and searching, which make it easier to locate specific data within the database. This allows organizations to manage their data more efficiently and effectively.
+=========================================================================
+==================================================================
+DBMS applications
+Applications where we use Database Management Systems are:
+
+
+Business: Many businesses use databases to store and manage customer, financial, and inventory data.
+Government: Government agencies use databases to store and manage information about citizens, such as demographic data, voting records, and tax information.
+Education: Universities and schools use databases to store and manage student information, including grades, transcripts, and class schedules.
+Banking and finance: Banks and financial institutions use databases to store and manage account information, transactions, and credit history.
+
+Library Management System
+There are many books in the library so; it is difficult to store the record of the relative multitude of books in a register or duplicate. Along these lines, the data set administration framework (DBMS) is utilized to keep up all the data identified with the name of the book, issue date, accessibility of the book, and its writer. 
+
+Medical:
+There is a lot of important data collection in the medical field, so it is necessary to use the database to store data related to the medical field, such as patient details, medicine details, practitioner details, surgeon details, appointment details, doctor schedule, patient discharge details, payment detail, invoices, and other medical records. The database management system is a boon for the medical field because it helps doctors to monitor their patients and provide better care.
+
+ Accounting and Finance:
+When there is big data regarding accounting and finance, there is a need to maintain a large amount of data, which is done with the help of a database. The database stores data such as accounting details, bank details, purchases of stocks, invoice details, sales records, asset details, etc. Accounting and finance database helps in maintaining and analyzing historical data.
+=================================================================
+
+===============================================================================
+CHARACTERISTIC OF DBMS:
+
+1)Data scalability: DBMS are designed to handle large amounts of data and are scalable to meet the growing needs of organizations. As organizations grow, DBMS can scale up to handle increasing amounts of data and user traffic.
+2)Concurrent Data Access:
+A DBMS provides a concurrent access mechanism that allows multiple users to access the same data simultaneously. This is especially important for organizations that require real-time data access. DBMSs use locking mechanisms to ensure that multiple users can access the same data without causing conflicts or data corruption.Anomalies occur when changes made by one user get lost because of changes made by another user. The file system does not provide any procedure to stop anomalies. Whereas DBMS provides a locking system to stop anomalies to occur.
+3)Easily Maintenance: It can be easily maintainable due to the centralized nature of the database system.
+4)Searching is faster:In the case of the Traditional file systems, the programmer needs to write lengthy programs everytime to fetch certain information, with DBMS some 2-3 line query is enough to fetch as many data as we want.
+I want to search train detail and if i use file system then I will get entire file containing train data.want to search 1 kb data ,but how much data is coming to me 25gb. memory utilized and time consuming. now data is with server,user will fire 1 query to get 1 kb data. seraching fast,memory utilization is less.
+we need to know file location but in dbms data is stored at centralized place.user dont know location where the data is stored.
+5)role based security control
+6)Redundancy problem can be solved.
+
+In the File System, duplicate data is created in many places because all the programs have their own files which create data redundancy resulting in wastage of memory. In DBMS, all the files are integrated in a single database. So there is no chance of duplicate data.
+
+For example: A student record in a library or examination can contain duplicate values, but when they are converted into a single database, all the duplicate values are removed.
+7)constraints:There may be cases when some constraints need to be applied to the data before inserting it into the database. The file system does not provide any procedure to check these constraints automatically. Whereas DBMS maintains data integrity by enforcing user-defined constraints on data by itself.
+8)Data sharing: The file system does not allow sharing of data or sharing is too complex. Whereas in DBMS, data can be shared easily due to a centralized system.
+9)Data searching: For every search operation performed on the file system, a different application program has to be written. While DBMS provides inbuilt searching operations. The user only has to write a small query to retrieve data from the database.
+10)System crashing: In some cases, systems might have crashed due to various reasons. It is a bane in the case of file systems because once the system crashes, there will be no recovery of the data that’s been lost. A DBMS will have the recovery manager which retrieves the data making it another advantage over file systems. 
+11)Data security: A file system provides a password mechanism to protect the database but how long can the password be protected? No one can guarantee that. This doesn’t happen in the case of DBMS. DBMS has specialized features that help provide shielding to its data. 
+12)Backup: It creates a backup subsystem to restore the data if required.
+13)A DBMS provides data abstraction, which hides the data storage and management details from the users. This allows the users to focus on the data rather than the details of how the data is stored and managed.
+14)Data consistency and accuracy: DBMS ensures that data is consistent and accurate by enforcing data integrity constraints and preventing data duplication. 
+=============================================================
+ =======================================================================
+ Types of Databases
+ There are many types of databases.
+ 
+ Relational Databases: A relational database’s contents are arranged as a collection of tables with rows and columns. Accessing structured data is made most flexible and efficient by relational database technology.
+
+Centralized Database
+A centralized database is a database that is stored on a central server and can be accessed by multiple users over a network. The central server acts as a hub for the database, and all users access the same copy of the database. This database is commonly used in organizations to store and manage data that is shared by multiple users or departments.
+
+NoSQL Databases: , NoSQL, or nonrelational databases,  permit the storing and manipulation of unstructured and semistructured data.
+  
+===================================================================
+
+structured data is stored in the form of relation,so I want some management which should support relations,whenever I need to store the data,data should be be stored in relations, and data can be accessed from relations. To store data in relation,to access data from relation ,we need one management system i.e DBMS .But I want management system for relation i.e why we need RDBMS
+================================================================
+The main difference between a DBMS and an RDBMS is that a DBMS is a software application used to store, retrieve, and manage data in a database, while an RDBMS is a type of DBMS that stores data in a relational database.
+===================================================================
+What is a RDBMS (Relational Database Management System)
+==It is a type of DBS that is based on relational model which is introduced by Edger F codd.
+==>RDBMS is a DBMS in whicch data is stored in the form of tables and relationship among data is also stored in the form of tables.
+==>RDBMS stores the data in form of tables, these tables are interconnected to each other which helps in identifying the relation between the data stored in different tables. It stores the data efficiently and the operations on the data stored in RDBMS are faster compared to the traditional file based data management system.
+==>It is a type of DBMS that stores data in a relational database. RDBMSs are used by organizations to store data in a central location so that authorized users can access it.
+===========================================================================================================

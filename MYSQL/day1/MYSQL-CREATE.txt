@@ -1,0 +1,110 @@
+
+
+The MySQL CREATE TABLE Statement
+
+1 A table is used to organize data in the form of rows and columns and used for both storing and displaying records in the structure format. 
+2 The CREATE TABLE statement is used to create a new table in a database.
+3 A Table is a combination of rows and columns. For creating a table we have to define the structure of a table by adding names to columns and providing data type and size of data to be stored in columns.
+
+CREATE TABLE [IF NOT EXISTS] table_name(
+   column1 datatype ,
+   column2 datatype ,
+   ...   ....
+); 
+
+table_name: This is the name of the table that you want to create.
+column1, column2, etc.: The names of the columns in the table.
+datatype: the data of each column such as INT, VARCHAR, DATE, etc.
+If you create a table with a name that already exists in the database, you’ll get an error
+===================================================================================
+Example1:
+---------
+mysql> create table student(id tinyint,name varchar(255),percentage double);
+
+Example2:
+---------
+mysql> create table emp
+    -> (
+    -> eid tinyint,
+    -> name varchar(255),
+    -> design varchar(255),
+    -> gender char(6),
+    -> salary double,
+    -> doj date
+    -> );
+
+Example3:
+---------
+mysql> create table sales
+    -> (
+    -> salesyear year,
+    -> income double,
+    -> expenditure double
+    -> );
+
+Example3:
+---------
+mysql> create table sales
+    -> (
+    -> salesyear year,
+    -> income double,
+    -> expenditure double
+    -> );
+
+Example4:
+---------
+mysql> create table patients
+    -> (
+    -> name varchar(255),
+    -> doctorname varchar(255),
+    -> gender char(6),
+    -> dateofadmission datetime,
+    -> dateofdischarge datetime
+    -> );
+==================================================================
+View list of tables:
+We need to use the following command to see the newly created table:
+-------------------
+syntax:
+-------
+show tables;
+
+===============================================================
+View structure of the tables
+-----------------------------
+==>DESCRIBE or DESC(both are the same) commands to describe the structure of a table.
+
+ Syntax:
+    DESCRIBE one;
+
+      OR
+
+    DESC one;
+
+==>So desc or describe command shows the structure of the table which include the name of the column, the data type of the column and the nullability which means, that column can contain null values or not.
+
+ex:
+create table one
+(
+ id int not null,
+ name char(25),
+ city varchar2(25)
+)
+
+DESC one
+  OR
+DESCRIBE one
+
+
+=======================================================================
+Assignment:
+
+1) CREATE TABLE Persons having fields as     PersonID     LastName ,    FirstName ,    Address ,    City 
+
+
+2)create a table called employee_information which hold the some columns in it. It holds the employee_id,first name,last name, and email, position or role of employee and salary.
+
+Let’s verify the table is created or not with the help of DESCRIBE command.
+==================================================================
+
+

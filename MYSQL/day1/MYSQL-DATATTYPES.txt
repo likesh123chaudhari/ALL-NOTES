@@ -1,0 +1,168 @@
+Data types:
+
+1 Data type represents the type of data that we are using to represent columns. 
+2 In MySQL, each database table has many columns and contains specific data types for each column.
+3 In MySQL the data types are divided into the following.....
+
+1. Numeric Data type
+2. Character Data type
+3. Date Data type
+4. Large Object Data type (LOB)
+5.null Datatype
+
+1. Numeric Data type
+--------------------
+if we want to hold numeric values then we should go for this data type. Again it is divided into the following types...
+
+Numbers -----> 123
+Fractions ---> 2.5
+
+Numeric Data Type
+TINYINT	:
+It is a very small integer that can be signed or unsigned. 
+We can specify a width of up to 4 digits.
+ It takes 1 byte for storage.
+
+SMALLINT	It is a small integer that can be signed or unsigned. 
+ We can specify a width of up to 5 digits. 
+It requires 2 bytes for storage.
+
+MEDIUMINT	It is a medium-sized integer that can be signed or unsigned.
+. We can specify a width of up to 9 digits. 
+It requires 3 bytes for storage.
+
+INT	:used to store whole number. It is a normal-sized integer that can be signed or unsigned. 
+We can specify a width of up to 11 digits. 
+It requires 4 bytes for storage.
+
+
+BIGINT	It is a large integer that can be signed or unsigned.
+ We can specify a width of up to 20 digits. 
+It requires 8 bytes for storage.
+
+=================================================================================
+Fractions:
+----------
+
+23.42===>float(4,2);
+2.4567==>float(5,4);
+2.1==>float(2,1);
+float(x,y) -----> 24 decimals
+double(x,y) ----> 53 decimals
+decimal(x,y) ---> currency data
+
+1.17293459
+this floating point value will be converted into ==>1.17293460
+round off will happen in case of float and double
+in currency or money related,round off should be avoided therefore use  special datatype as decimal to represent currency data.
+
+==>If anywhere while creating table,if we are dealing with amount related functionalities better to go for decimal datatype.
+
+
+FLOAT(m,d)	It is a floating-point number . 
+You can define the display length (m) and the number of decimals (d). This is not required and will default to 10,2, where 2 is the number of decimals, and 10 is the total number of digits (including decimals). . It requires 2 bytes for storage.Decimal precision can go to 24 places for a float type.
+
+DOUBLE(m,d)	It is a double-precision floating-point number. You can define the display length (m) and the number of decimals (d). This is not required and will default to 16,4, where 4 is the number of decimals.  It requires 8 bytes for storage.Decimal precision can go to 53 places for a double type.
+
+DECIMAL(size, d) 	An exact fixed-point number. The total number of digits is specified in size. The number of digits after the decimal point is specified in the d parameter. The maximum number for size is 65. The maximum number for d is 30. 
+
+BOOL	It is used only for the true and false condition. It considered numeric value 1 as true and 0 as false.
+==========================================================================================================
+
+2. Character Data type
+----------------------
+if we want to represent single / group of characters, then we can use this
+==>the data which is not performing any calculation in my program, use only for searching or equality, better to go for char datatype 
+
+char(n) -------> n characters==>use when we know exactly how many characters we want to store.
+varchar(n) ----> n characters 
+text(n)
+mediumtext(n)
+longtext(n)
+
+Example:
+--------
+to represent name --------> varchar(255)
+to represent comments ----> text(10000)
+to represent account_num -> char(10) -----> acc no should be 10 digits. memory will be created only for 10 characters.
+if we use varchar in place of char even if i give 100 digits, it can accept. so not recommended to use varchar.
+and moreover we dont want to perform any mathematical calculations on accnum so int is also not recommended. 
+
+mbl_num -----> char(10)
+PAN_num -----> char(12)
+aadhar ------> char(12)
+ 
+PRN001
+PRN002 ......    char(6)
+=================================================================================
+CHAR(size)	It can have a maximum size of 255 characters.Here size is the max number of characters to store. 
+Fixed-length strings. static datatype. size cannot be changed at runtime. used to store character and alpha numerics store  in non unicode fashion i.e 1 byte=1 character. Leads to memory wastage
+
+VARCHAR(size)	Variable-length string between 1 to  255 characters.	Here size is the max number of characters to store. ex 'T','MYSQL','9999','AWESOME VIDEOS'.dynamically allocated memory. store in unicode fashion. 
+name varchar(10). dynamically allocated memory , no memory wastage.
+
+TEXT(size)	Maximum size of 65,535 characters.	Here size is the number of characters to store.
+MEDIUMTEXT(size)	It can have a maximum size of 16,777,215 characters.
+Here size is the number of characters to store.
+LONGTEXT(size)	It can have a maximum size of 4GB or 4,294,967,295 characters.	
+Here size is the number of characters to store.
+====================================================================
+
+3. Date Data type
+------------------
+==>if we want to use date and time then go for this datatype
+ 
+datetime ---------> 'YYYY-MM-DD HH:MM:SS'
+date -------------> 'YYYY-MM-DD'
+time -------------> 'HH:MM:SS'
+year -------------> 'YYYY' or 'YY' (default:4)
+
+YEAR[(2|4)]:	Year value as 2 digits or 4 digits.	The default is 4 digits. It takes 1 byte for storage.
+DATE			Displayed as 'yyyy-mm-dd'. It takes 3 bytes for storage.
+TIME			Displayed as 'HH:MM:SS'. It takes 3 bytes .
+DATETIME		Displayed as 'yyyy-mm-dd hh:mm:ss'.  It takes 5 bytes 
+TIMESTAMP(m) 'YYYY-MM-DD HH:MM:SS'. .(current time and date)
+
+
+4. Large OBject Data type (LOB)
+-------------------------------
+if we want to upload 
+document
+pdf
+resume
+photo
+movie
+mp4
+mp3
+jpg
+png etc
+
+three types of large objects.
+TINYBLOB -----> 500MB
+MEDIUMBLOB --->will take upto 2 GB
+BLOB ---------> 5 GB
+
+for larger data we have to go for cloud related technologies.
+
+5. Null data type
+-----------------
+==> No Data 
+==> Unknown data any value.
+
+1 ----> True
+0 ----> False
+
+6 + null(random value) -----> null
+2=2      -----> 1
+3=2      -----> 0
+
+2=null (may be 2 or not 2)  -----> null
+null statements cannot give exact results . cant predict the result
+
+mysql:>select 2=null;//we cant predict the value of null as 2 or other than 2 so output is also not predictable;
+result:null
+=============================================================================
+
+
+
+

@@ -1,0 +1,37 @@
+DQL (Data Query Language) Commands (select)
+-------------------------------------------
+=> The main purpose of DQL command is to display records.
+=> It won't change data in the table.
+The MySQL SELECT Statement
+
+The SELECT statement is used to select data from a database.
+The SELECT Statement in MySQL retrieves data from one or more tables in a database. 
+Its primary function is to query the database and return a result set. It can also be used to retrieve specific data from a specific table.
+=======================================
+Syntax
+The Basic Syntax of the MySQL SELECT Statement is as follows:
+
+SELECT column1, column2, …
+FROM table_name
+
+Here, column1, column2, … are the columns you want to retrieve. If you want to retrieve data from all columns/fields, you can use the following syntax:
+SELECT * FROM table_name
+
+It can also be used to print text and perform simple mathematical operations in MySQL. For example SELECT 14+15 and SELECT “HELLO WORLD”.
+
+========================================
+
+
+ select * from myemp;
+
+select * from myemp limit 10;
+
+select first_name,hire_date,job_id,salary from myemp limit 5;
+select first_name,salary,salary*0.02,salary+salary*0.02 from myemp limit 5;
+
+select first_name,salary,
+    -> salary*0.02 as 'Bonus',
+    -> salary+salary*0.02 as 'Total Salary'
+    -> from myemp
+    -> limit 5;
+

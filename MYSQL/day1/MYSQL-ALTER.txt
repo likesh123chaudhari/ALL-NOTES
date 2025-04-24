@@ -1,0 +1,327 @@
+ALTER Command:
+~~~~~~~~~~~~~~
+Once if the table got created, if we want to make alternations on that table, then we can use alter command.
+
+syntax:
+-------
+alter table <tblName> add column --------; ====> add new col in to table
+alter table <tblName> change column -----; ====> change col name
+alter table <tblName> modify column -----; ====> change col type
+alter table <tblName> drop column -------; ====> remove col
+alter table <tblName> rename to <newTblName>; => rename table
+
+Example:
+--------
+mysql> select * from student;
++------+---------+------------+
+| id   | name    | percentage |
++------+---------+------------+
+|    1 | Prakash |      67.88 |
+|    2 | Kalyan  |      77.18 |
++------+---------+------------+
+2 rows in set (0.00 sec)
+
+mysql> alter table student add column grade char(1);
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from student;
++------+---------+------------+-------+
+| id   | name    | percentage | grade |
++------+---------+------------+-------+
+|    1 | Prakash |      67.88 | NULL  |
+|    2 | Kalyan  |      77.18 | NULL  |
++------+---------+------------+-------+
+2 rows in set (0.00 sec)
+
+Example:
+--------
+mysql> select * from student;
++------+---------+------------+-------+
+| id   | name    | percentage | grade |
++------+---------+------------+-------+
+|    1 | Prakash |      67.88 | NULL  |
+|    2 | Kalyan  |      77.18 | NULL  |
++------+---------+------------+-------+
+2 rows in set (0.00 sec)
+
+mysql> alter table student add column email varchar(20) first;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from student;
++-------+------+---------+------------+-------+
+| email | id   | name    | percentage | grade |
++-------+------+---------+------------+-------+
+| NULL  |    1 | Prakash |      67.88 | NULL  |
+| NULL  |    2 | Kalyan  |      77.18 | NULL  |
++-------+------+---------+------------+-------+
+2 rows in set (0.00 sec)
+
+Example:
+--------
+mysql> alter table student add column student_mother_name varchar(20) after name;
+
+mysql> select * from student;
++-------+------+---------+---------------------+------------+-------+
+| email | id   | name    | student_mother_name | percentage | grade |
++-------+------+---------+---------------------+------------+-------+
+| NULL  |    1 | Prakash | NULL                |      67.88 | NULL  |
+| NULL  |    2 | Kalyan  | NULL                |      77.18 | NULL  |
++-------+------+---------+---------------------+------------+-------+
+2 rows in set (0.00 sec)
+
+Example:
+--------
+mysql> select * from student;
++-------+------+---------+---------------------+------------+-------+
+| email | id   | name    | student_mother_name | percentage | grade |
++-------+------+---------+---------------------+------------+-------+
+| NULL  |    1 | Prakash | NULL                |      67.88 | NULL  |
+| NULL  |    2 | Kalyan  | NULL                |      77.18 | NULL  |
++-------+------+---------+---------------------+------------+-------+
+2 rows in set (0.00 sec)
+
+mysql> alter table student change student_mother_name mname varchar(20);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from student;
++-------+------+---------+-------+------------+-------+
+| email | id   | name    | mname | percentage | grade |
++-------+------+---------+-------+------------+-------+
+| NULL  |    1 | Prakash | NULL  |      67.88 | NULL  |
+| NULL  |    2 | Kalyan  | NULL  |      77.18 | NULL  |
++-------+------+---------+-------+------------+-------+
+2 rows in set (0.00 sec)
+
+Example:
+--------
+mysql> desc student;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| email      | varchar(20)  | YES  |     | NULL    |       |
+| id         | tinyint      | YES  |     | NULL    |       |
+| name       | varchar(255) | YES  |     | NULL    |       |
+| mname      | varchar(20)  | YES  |     | NULL    |       |
+| percentage | double       | YES  |     | NULL    |       |
+| grade      | char(1)      | YES  |     | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> alter table student modify column grade char(4);
+Query OK, 2 rows affected (0.13 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| email      | varchar(20)  | YES  |     | NULL    |       |
+| id         | tinyint      | YES  |     | NULL    |       |
+| name       | varchar(255) | YES  |     | NULL    |       |
+| mname      | varchar(20)  | YES  |     | NULL    |       |
+| percentage | double       | YES  |     | NULL    |       |
+| grade      | char(4)      | YES  |     | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+6 rows in set (0.01 sec)
+
+Example:
+--------
+mysql> select * from student;
++-------+------+---------+-------+------------+-------+
+| email | id   | name    | mname | percentage | grade |
++-------+------+---------+-------+------------+-------+
+| NULL  |    1 | Prakash | NULL  |      67.88 | NULL  |
+| NULL  |    2 | Kalyan  | NULL  |      77.18 | NULL  |
++-------+------+---------+-------+------------+-------+
+2 rows in set (0.00 sec)
+
+mysql> alter table student drop column email;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from student;
++------+---------+-------+------------+-------+
+| id   | name    | mname | percentage | grade |
++------+---------+-------+------------+-------+
+|    1 | Prakash | NULL  |      67.88 | NULL  |
+|    2 | Kalyan  | NULL  |      77.18 | NULL  |
++------+---------+-------+------------+-------+
+2 rows in set (0.00 sec)
+
+Example:
+--------
+mysql> show tables;
++---------------+
+| Tables_in_aaa |
++---------------+
+| emp           |
+| patients      |
+| sales         |
+| student       |
++---------------+
+4 rows in set (0.00 sec)
+
+mysql> alter table student rename to std;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> show tables;
++---------------+
+| Tables_in_aaa |
++---------------+
+| emp           |
+| patients      |
+| sales         |
+| std           |
++---------------+
+4 rows in set (0.00 sec)
+
+
+=================================================================
+MySQL ALTER TABLE Statement
+
+The ALTER TABLE statement is used to add, delete, or modify columns in an existing table.
+The ALTER TABLE statement is also used to add and drop various constraints on an existing table.
+The ALTER statement is always used with "ADD", "DROP" and "MODIFY" commands according to the situation. 
+=======================================================================================================
+
+ALTER TABLE - ADD Column
+To add a column in a table, use the following syntax:
+
+ALTER TABLE table_name
+ADD column_name datatype;
+
+ex:
+The following SQL adds an "Email" column to the "Customers" table:
+
+ExampleGet your own SQL Server
+ALTER TABLE Customers
+ADD Email varchar(255);
+===============================================
+ALTER TABLE - DROP COLUMN
+To delete a column in a table, use the following syntax (notice that some database systems don't allow deleting a column):
+
+ALTER TABLE table_name
+DROP COLUMN column_name;
+
+
+The following SQL deletes the "Email" column from the "Customers" table:
+Example
+ALTER TABLE Customers
+DROP COLUMN Email;
+================================================================
+ALTER TABLE - MODIFY COLUMN
+To change the data type of a column in a table, use the following syntax:
+
+ALTER TABLE table_name
+MODIFY COLUMN column_name datatype;
+==================================================
+
+
+
+
+MySQL ALTER TABLE Example
+Look at the "Persons" table:
+
+ID	LastName	FirstName	Address	City
+1	Hansen	Ola	Timoteivn 10	Sandnes
+2	Svendson	Tove	Borgvn 23	Sandnes
+3	Pettersen	Kari	Storgt 20	Stavanger
+Now we want to add a column named "DateOfBirth" in the "Persons" table.
+
+We use the following SQL statement:
+
+Example
+ALTER TABLE Persons
+ADD DateOfBirth date;
+=========================================================
+Change Data Type Example
+Now we want to change the data type of the column named "DateOfBirth" in the "Persons" table.
+
+
+Example
+ALTER TABLE Persons
+MODIFY COLUMN DateOfBirth year;
+Notice that the "DateOfBirth" column is now of type year and is going to hold a year in a two- or four-digit format.
+
+DROP COLUMN Example
+Next, we want to delete the column named "DateOfBirth" in the "Persons" table.
+
+We use the following SQL statement:
+
+Example
+ALTER TABLE Persons
+DROP COLUMN DateOfBirth;
+The "Persons" table will now look like this:
+
+ID	LastName	FirstName	Address	City
+1	Hansen	Ola	Timoteivn 10	Sandnes
+2	Svendson	Tove	Borgvn 23	Sandnes
+3	Pettersen	Kari	Storgt 20	Stavanger
+
+=====================================================================
+=================================================================
+ Add multiple columns in the table
+Syntax:
+
+ ALTER TABLE table_name  
+ ADD new_column_name column_definition  
+ [ FIRST | AFTER column_name ],  
+ADD new_column_name column_definition  
+[ FIRST | AFTER column_name ],  
+  ...  
+;  
+Example:
+
+In this example, we add two new columns "cus_address", and cus_salary in the existing table "cus_tbl". cus_address is added after cus_surname column and cus_salary is added after cus_age column.
+ALTER TABLE cus_tbl  
+ADD cus_address varchar(100) NOT NULL  
+AFTER cus_surname,  
+ADD cus_salary int(100) NOT NULL  
+AFTER cus_age ;  
+
+See the recently added columns:
+
+    SELECT* FROM cus_tbl;  
+
+
+=========================================
+ALTER TABLE cus_tbl  
+MODIFY cus_surname varchar(50) NULL;  
+=======================================
+ALTER TABLE cus_tbl  
+DROP COLUMN cus_address;  
+======================================
+===========================================
+RENAME table
+Syntax:
+
+ALTER TABLE table_name  
+RENAME TO new_table_name;  
+Example:
+
+In this example, the table name cus_tbl is renamed as cus_table.
+
+ALTER TABLE cus_tbl  
+RENAME TO cus_table;  
+===================================================================================================
+MYSQL TUTORIAL------->PRACTICAL
+
+CREATE TABLE vehicles (
+    vehicleId INT,
+    year INT NOT NULL,
+    make VARCHAR(100) NOT NULL,
+    PRIMARY KEY(vehicleId)
+);
+
+
+1) Add a column to a table
+2)Add multiple columns to a table
+3)Modify a column
+4)Drop a column
+5)Rename table
+
+
+=======================================================

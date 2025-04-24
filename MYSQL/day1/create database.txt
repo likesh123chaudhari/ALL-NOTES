@@ -1,0 +1,43 @@
+==>A database is used to store the collection of records in an organized form.
+==> It allows us to hold the data into tables, rows, columns, and indexes to find the relevant information frequently. 
+==>We can access and manage the records through the database very easily.
+
+=================================================================================================
+We can create a new database in MySQL by using the CREATE DATABASE statement with the below syntax:
+
+    CREATE DATABASE [IF NOT EXISTS] database_name  ;
+
+create database mysql12pm;
+==============================================================
+We can list all the databases available on the MySQL server host using the following command, as shown below:
+
+    mysql> SHOW DATABASES;  
+
+
+
+==========================================================
+MySQL SELECT Database
+
+SELECT Database is used in MySQL to select a particular database to work with. 
+This query is used when multiple databases are available with MySQL Server.
+
+You can use SQL command USE to select a particular database.
+mysql> select database();
+Syntax:
+
+    USE database_name;  //activate database
+use mysql12pm;
+===============================================================
+
+MySQL DROP Database
+
+We can delete a MySQL database  with the MySQL DROP DATABASE command. 
+It will delete the database along with all the tables, indexes, and constraints permanently. 
+Therefore, we should have to be very careful while removing the database in MySQL because we will lose all the data available in the database. 
+If the database is not available in the MySQL server, the DROP DATABASE statement throws an error.
+
+DROP DATABASE [IF EXISTS] database_name;  
+
+DROP DATABASE MYSQL12PM;
+=============================================================
+

@@ -1,0 +1,119 @@
+
+The MySQL UPDATE Statement
+==>MySQL UPDATE query is a DML statement used to modify the data of the MySQL table within the database. In a real-life scenario, records are changed over a period of time. So, we need to make changes in the values of the tables also. To do so, it is required to use the UPDATE query.
+==>
+The UPDATE statement is used with the SET and WHERE clauses. The SET clause is used to change the values of the specified column. We can update single or multiple columns at a time.
+
+
+The UPDATE statement is used to modify the existing records in a table.
+
+ Syntax:
+
+update <tblName> set <col> = <value>;
+
+update <tblName> set <col> = <value> where <condition>;
+
+The WHERE clause specifies which record(s) that should be updated. If you omit the WHERE clause, all records in the table will be updated!
+============================================================================================
+ EX 1:update student set percentage = percentage + 1.25;
+select * from student;
+=======================================================================
+UPDATE Multiple Records
+It is the WHERE clause that determines how many records will be updated.
+
+
+EX 2:update student set percentage=60.22 where id=113;
+select * from student;
+=============================================================
+EX 3:update emp set salary = salary + 150.0;
+
+EX 4:update emp set salary = salary + 50.0 where gender='female';
+
+EX 5: update emp set design='Trainer',salary=50000.0 where eid=33;
+
+===================================================================
+===================================================================
+
+==================================================
+Update Single Column
+
+This query will update the email id of Java course with the new id as follows:
+
+UPDATE trainer    
+SET email = 'mike@tutorialandexamples.com'    
+WHERE course_name = 'Java';  
+After successful execution, we will verify the table using the below statement:
+
+SELECT * FROM trainer;    
+====================================================
+  
+====================================
+
+
+
+CREATE TABLE geeksforgeeks(
+  id varchar(100) ,
+  name varchar(100),
+  monthly_score int,
+  contest_rank int,
+  courses_enrolled int,
+ );
+Insert Values Into the Table:
+
+INSERT INTO geeksforgeeks(id,name,monthly_score,contest_rank,courses_enrolled)
+VALUES('vish3001','Vishu',50,01,10);
+INSERT INTO geeksforgeeks(id,name,monthly_score,contest_rank,courses_enrolled)
+VALUES('Aayush05','Aayush',48,02,08);
+INSERT INTO geeksforgeeks(id,name,monthly_score,contest_rank,courses_enrolled)
+VALUES('Neeraj50','Neeraj',46,03,06);
+INSERT INTO geeksforgeeks(id,name,monthly_score,contest_rank,courses_enrolled)
+VALUES('Sumit65','Sumit',45,04,05);
+INSERT INTO geeksforgeeks(id,name,monthly_score,contest_rank,courses_enrolled)
+VALUES('Harsh45','Harsh',42,05,07);
+
+QUES 1: update  contest_rank to 10 for the id =”Neeraj50″.
+
+Query:
+
+UPDATE geeksforgeeks
+SET contest_rank = 10
+WHERE id = 'Neeraj50';
+
+SELECT * FROM geeksforgeeks;
+==============================================
+QUES 2:  update contest_rank and courses_enrolled for the id = “Sumit65“.
+
+Query:
+
+UPDATE geeksforgeeks
+SET contest_rank = 55, courses_enrolled = 15
+WHERE id = 'sumit65';
+
+SELECT * FROM geeksforgeeks;
+======================================
+QUES  3: 
+ update name = “Vishu Vaishnav” where id = “vish3001”.
+
+Query:
+
+UPDATE geeksforgeeks
+SET name = 'Vishu Vaishnav'
+WHERE id = 'vish3001';
+
+SELECT * FROM geeksforgeeks;
+=========================================
+QUES 4:
+ increment the monthly score by 1 for each record. Query:
+
+UPDATE geeksforgeeks
+SET monthly_score = monthly_score + 1;
+
+SELECT * FROM geeksforgeeks
+=========================================
+
+===========================================================================
+
+
+USE the following employees table from the sample database.
+1)Using MySQL UPDATE to modify values in a single column
+2)2) Using MySQL UPDATE to modify values in multiple columns

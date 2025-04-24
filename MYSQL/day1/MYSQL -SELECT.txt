@@ -1,0 +1,45 @@
+
+
+CREATE TABLE employees (
+     employee_id INT,
+     first_name VARCHAR(50),
+     last_name VARCHAR(50),
+     salary DECIMAL(10, 2) );
+INSERT INTO employees VALUES
+     (1, 'John', 'Doe', 50000),
+     (2, 'Jane', 'Smith', 60000),
+     (3, 'Robert', 'Johnson', 75000);
+
+Example 1: SELECT Columns
+Retrieve only first_name and last_name columns
+
+SELECT first_name, last_name
+FROM employees;
+
+Example 2: SELECT * (Select Entire Table)
+This query will retrieve the entire employee table.
+
+SELECT * from employees;
+
+Example 3: SELECT without table
+SELECT 32*32
+
+We can also use SELECT statement to perform, basic mathematical operations.
+
+=========================================================================================================================================================================
+Column alias
+==>By default, MySQL uses the expression specified in the SELECT clause as the column name of the result set. 
+==>To change a column name of the result set, you can use a column alias:
+
+SELECT expression/col name AS column_alias;
+To assign an alias to a column, you place the AS keyword after the expression followed by a column alias. The AS keyword is optional, so you can skip it like this:
+===========================================================================
+
+
+========================================================================
+PRACTICAL
+
+
+1)use the employees table in the sample database 
+2)uses the SELECT FROM statement to retrieve the last names of all employees:
+3)uses the SELECT FROM statement to get the first name, last name, and job title of employees:
