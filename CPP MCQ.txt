@@ -1,0 +1,1023 @@
+
+ 
+
+Select True or False:
+
+1.	Data items in a class may be public. (
+2.	Class members are public by default. (
+3.	Friend functions have access only to public members of the class. 
+4.	A function designed as public can be accessible by non-members of a class. 
+5.	Friendship is commutative. 
+6.	new and delete are operators. 
+7.	We can implement generic classes using templates 
+8.	Using operator overloading we can invent new operators
+9.	Inheritance helps in making a general class into a more specific class.)
+10.	Classes can be inherited privately. 
+11.	Constructors can be virtual like virtual destructors 
+ 
+12.	A class encapsulates the implementation and interface of a user-defined data type and constitutes an abstract data type. 
+13.	std::cout is a standard input stream. 
+14.	Preprocessor #define macro and inline functions use the same mechanism. 
+15.	The new operator returns the address and size of the memory block that it allocates. 
+16.	The heap storage is used for local objects. 
+17.	There can be a null reference. 
+18.	One can change the value of a reference after it is initialized. 
+19.	It is nothing wrong that a function returning a reference to an automatic variable. 
+20.	The preprocessor processes source code before the compiler does. 
+21.	A function template defines a parameterized nonmember function, which enables a program to call the same function with different types of arguments.
+22.	Destructors can be overloaded. 
+23.	Static data members cannot be private. 
+24.	Static member functions can use this pointer. 
+25.	One cannot use enumerations in a class. 
+26.	One cannot create an object of a virtual class. 
+27.	The push operation inserts an element at the end of a stack. 
+28.	It is not possible to rethrow an exception.
+29.	There can be only one catch block in a program.
+30.	When an exception if throw, but not caught, the program ignorers the error. 
+
+
+====================================================================
+1)  Why would your class have a pure virtual function? 
+1) To insure that this function is overridden in derived classes that are to be instantiated. 
+2) To allow for templated classes to be used with friend functions. 
+3) To maximize the execution speed of the function providing that memory is not at a premium. 
+4) To maximize the memory efficiency providing that execution speed is not at a premium.
+
+2)  In most cases, a benefit of inheritance is that it ________. 
+1) eliminates redundant classes 
+2) increases program execution speed 
+3) enhances security 
+4) reduces work
+  
+3)  Reusable and extensible are feature of 
+1)	Abstraction
+2)	Encapsulation
+3)	Polymorphism
+4)	Inheritance
+
+4)  In order for function f to use a private attribute belonging to class C, you must___.
+1) declare f a friend in C
+2) declare C a friend in f
+3) Both of the above
+4)None of above
+
+5)  Function can be overloaded.
+1) When they have same name and return type.
+2) When they have same name and return type and diff parameters.
+3) When they have same name and diff return type and diff parameter.
+4)When they have same name and diff type of parameters or diff no of parameters, return type does not matter.
+
+6)  Classes are useful because they
+a) encapsulate all the features of an entity in one place	
+b) can be consider similar to real existing objects
+c) provide direct access to information
+d) bring together all aspects of and entity in one place
+
+1)	a and b	2)  a, b and c	    3)  a, b and d	4)  a to d
+
+ 7)  With inheritance new capabilities are added to
+a) The base class    b) Both the base and the derived class    c) the derived class	d) none of the above
+
+8)  What is the main purpose of creating a abstract base class
+a) Creating dynamic objects       b) Dynamic binding         c) Deriving classes	d) none of these
+
+9)  If a class D is derived from A and B is derived from class D then it is called as ______ inheritance
+a) Multiple               b) Hierarchical                 c) Multilevel                   d) Single
+
+10) static member functions
+a.	can access only static members in the same class
+b.	can access non-static members
+c.	can access constant members
+d.	both (a) and (c) above
+
+11) (i) constructors can be virtual
+       (ii) destructors can’t be virtual
+        which of the above statements are true
+	a. both are true					b. both are false
+	c. (i) is true & (ii) is false				d. (ii) is true & (i) is false
+
+12. Which one of the following is pure virtual function
+	a. virtual void funct (int n)			b. virtual void funct ( ) {}
+	c. virtual funct (int n);				d. virtual void funct (int n) = 0;
+
+13. virtual function can be defined in …………… section of a class
+	a. private		b. public		c. protected		d. anywhere
+
+14. A variable defined within a block is visible
+       a. throughout the function
+	b. from the point of definition onward in the block
+	c. from the point of definition onward in the function
+	d.	from the point of definition onward in the program
+
+15. Which one of the following is true statement?
+a.	friend function can access public data only
+b.	scope of friend function is limited within the class where it is declared
+c.	a friend function can’t be called using the object of that class
+d.	if friend is declared in private, it works differently when declared in public.
+
+16. Argument of a copy constructor is passed by
+	a. value		b. reference		c. address	 	d. none of the above
+
+17. Inline member function is treated like
+	a. macro		b. normal function		c. preprocessor		d. member function
+
+18. Choose the correct answer
+	Statement  (i). C++ allows all operators to be overloaded 
+	Statement  (ii) Friend function can’t be used with binary operator
+	Statement (iii) Friend function can access private member of a class 
+	Statement (iv) In binary operator overloading left hand operand is used to invoke the operator function and the 
+	right-hand operand as an argument to the operator function.
+
+	a. Statement (i) (iii) & (iv) are correct  		c. statement (iii) & (iv) are correct
+	b. all are correct					d. statement (i) (ii) (iii) are correct
+
+19. The new operator in C++
+	a. creates a variable called new			b. obtains memory for a new variable
+	c. returns a pointer to a variable			d. all of the above
+	e. both (b) and (c) above
+
+20. How many values can be returned from a function?
+	a. 1 		b. 2			c. 4			d. any number
+
+21. In C++, when an argument is passed by reference
+   	a. the function cannot access the argument’s value
+	b. a temporary variable is created in the calling program to hold the arguments value
+	c. a variable is created in the function to hold the arguments value
+	d. the function accesses the arguments original value in the calling program
+
+22. In general in C++, the dot operator (or class member access operator) connects the following two entities
+  	a. a class and a member of that class
+	b. a class object and a class
+      	c. a class member and a class object
+	d. a class object and a member of that class
+
+23.In object orient programming classes are useful because they
+ 	a. can closely model objects in the real world
+	b. bring together all aspects of an entity in one place
+	c. permit data to be hidden from other classes
+ 	d. all of the above
+
+24. In C++, a pure virtual function is a virtual function that
+  	a. has no body			b. is used in a base class		c. returns nothing		
+	d. both (a) and (b) above		e. all (a), (b), (c) above
+
+25. In C++, when an array name is passed to a function, the function
+  	a. access exactly the same array as the calling program
+	b. refers to the same array using a different name from that used by the calling program
+	c. all of the above
+	d. none of the above
+
+26. In C++, a virtual base class is useful when
+	a. it makes to use a base class with no body
+	b. there are multiple paths from one derived class to another
+	c. different functions in base and derived classes have the same name
+      d. the identification of a  function in a base class is ambiguous
+
+27. Operator overloading is
+	a. making C++ operators work with objects
+	b. giving new meanings to existing C++ operators
+	c. making new C++ operators
+	d. both (a)and (b) above
+
+28. In C++ language, the scope-resolution operator usually
+ 	a. specifics a  particular class and resolves ambiguities
+ 	b. tells what base class is derived from
+ 	c. all of the above
+
+29. A class hierarchy (in C++),
+  	a. describes “has a” relarionships
+ 	b. describes “is a kind of” relationship
+	c. shows the same relationships as a family tree
+ 	d. show the same relationships as a organization chart
+
+30.	To delete a dynamically allocated array named ‘a’, the correct statement is
+	(a) delete a;	(b) delete a[0];	(c) delete []a;	(d) delete [0]a;
+
+31.	Which of the following statement is false about pointers?
+(a)	The ++ and -- operators may be used with pointer variables
+(b)	An integer may be added and subtracted from a pointer variable (c) A pointer may be added to another pointer.
+(d) A pointer may be subtracted from another pointer.
+
+31.	A null pointer is a pointer that contains
+(a) the address 0	(b) the address that points to 0
+(c) the address that pointsto ‘\0’	(d) the address that points to -1
+
+32.	The design of classes in a way that hides the details of implementation from the user is known as:
+(a) Encapsulation	(b) Information Hiding
+(c) Data abstraction	(d) All of the above
+ 
+33.	I want a nonmember function to have access to the private members of a class. The class must declare that function:
+(a) friend	(b) inline
+(c) static	(d) virtual
+
+34.	A class member that is to be shared among all objects of a class is called
+(a) A const member	(b) A reference parameter
+(c) A static member	(d) A function member
+
+35.	A variable that is declared protected:
+(a)	Is visible only in the subclasses (and not in the class it is declared in).
+(b)	Is visible only in the class it is declared in.
+(c)	Is visible to all classes, but modifiable only in the class where it is declared. (d) Is visible in the class it is declared in, and all of its subclasses.
+
+36.	What is a destructor?
+(a) A function called when an instance of a class is initialized.
+ (b)A function that is called when an instance of a class is deleted.
+(c)	A special function to change the value of dynamically allocated memory.
+(d)	A function that is called in order to change the value of a variable.
+ 
+37.	In protected inheritance:
+(a) The public members of the base class become public. (b) The public members of the base class become protected.
+(c)	The protected members of the base class become private.
+(d)	The public members of the base class become inaccessible.
+
+38.	If a class declares a variable static, this means:
+(a)	Each instance of a class will have its own copy of the variable.
+(b)	Changing the variable in one instance will have no effect on other instances of the class. (c) There will be only one instance of the variable initialized for all classes.
+(d) Every instance of the class must consider the value of the static variable before initializing.
+
+39.	In case of a copy constructor, which of the following is true?
+(a)	Used to instantiate an object from another existing object
+(b)	To copy one object to another existing object.
+(c)	Can be a substitute for a ‘=’ operator.
+(d)	All of the above.
+
+40.	Which of the following can be virtual?
+(a) constructors (b) destructors
+(c)	static functions
+(d)	None of the above
+
+41	Static memberfunctions  	
+(a)	can be used without an instantiation of an object.
+(b)	can only access static data. (c) Both 1 and 2 arecorrect.
+(d) Neither 1 nor 2 are correct.
+
+42.	A	performs the copying for value returns as well as for value parameters.
+(a) Copy Constructor	(b) Parameterize Constructor
+(c) Default Constructor	(d) none
+
+43.	What makes a class abstract?
+(a)	The class must not have method
+(b)	The class must have a constructor that takes no arguments (c) The class must have a function definition equal to zero
+(d) The class may only exist during the planning phase
+
+44)Which one of the following cannot be used with the virtual keyword?
+a)Destructor
+b)Member function
+c)Constructor
+d)None of the above
+
+
+45)Which of the following is used for implementing the late binding?
+a)Operator Functions
+b)Virtual Functions
+c)new Operator
+d)Static Functions
+
+46)Which of the following statement is not true about C++?
+a)A class cannot have the data members as pointer.
+b)Dynamic objects in c++ can be created only with the help of new operator.
+c)Using abstract class we can achieve runtime polymorphism. 
+d)Static function can be overrided.
+
+47)Which of the following statements is correct about the friend function in C++ programming language?
+a)A friend function can access the private members of a class
+b)A friend function is able to access protected members of a class
+c)A friend function is able to access the public members of a class
+d)All of the above
+
+
+48)Which of the following can be considered as the correct syntax for declaring an array of pointers of integers that has a size of 10 in C++?
+a)int *arr = new int*[10]
+b)int *arr = new int[10];
+c)int arr = new int[10];
+d)int **arr = new int*[10];
+
+
+49)Which one of the following statements correctly refers to the Delete and Delete[] in C++ programming language?
+a)The "delete" is used for deleting the standard objects, while on the other hand, the "Delete[]" is used to delete the pointer objects
+b)The "Delete" is a type of keyword, whereas the "Delete[]" is a type of identifier
+c)The "Delete" is used for deleting a single standard object, whereas the "Delete[]" is used for deleting an array of the multiple objects
+d)Delete is syntactically correct although, if the Delete[] is used, it will obtain an error
+
+
+50)What will be the output of the following C++ code?
+   #include <iostream>  
+   using namespace std;  
+   int main ()  
+    {  
+	char str1[10] = "Hello";  
+	char str2[10] = "World";  
+	char str3[10];  
+	int len ;  
+	strcpy( str3, str1);  
+	strcat( str1, str2);  
+	len = strlen(str1);  
+	cout<<len<<endl;  
+	return 0;  
+    } 
+
+a)5
+b)12
+c)10
+d)11
+
+51)Which one of the following given statements is not true about the references in C++?
+a)Array of reference cannot be created.
+b)A reference cannot refer to a constant value
+c)A reference cannot be NULL
+d)Once a reference is created, it cannot be later made to reference another object; it cannot be reset
+
+52)Which of the following functions must use the reference in the argument list to avoid chain of calls?
+a)Copy constructor
+b)Virtual Function
+c)Friend Function
+d)Operator Function
+
+53)Which of the following definition best describes the concept of polymorphism?
+a)It is the ability to process the many messages and data in one way
+b)It is the ability to process the undefined messages or data in at least one way
+c)It is the ability to process the message or data in more than one form
+d)It is the ability to process the message or data in only one form
+
+54)Find the output of the following program.
+int main()
+{
+	 char ch[] = "c++ programs";
+ 	int i = sizeof(ch);
+ 	cout << i << endl;
+}
+a)13
+b)12
+c)1
+d)4
+
+
+55)Which one of the following is the correct way to declare a pure virtual function?
+a)virtual void Display(void){0};
+b)virtual void Display = 0;
+c)virtual void Display(void) = 0;
+d)void Display(void) = 0;
+
+
+56)Which of the following type of data member can be shared by all instances of its class?
+a)Public
+b)protected
+c)Static
+d)Friend
+
+57)Which of the following type of class allows only one object of it to be created?
+a)Virtual class
+b)Abstract class
+c)Singleton class
+d)Friend class
+
+
+58)Which of the following statement is correct?
+a)Overloaded functions can accept same number of arguments.
+b)Overloaded functions always return value of same data type.
+c)Overloaded functions can accept only same number and same type of arguments.
+d)Overloaded functions can accept only different number and different type of arguments.
+
+59)Which of the following statement will be correct if the function has three arguments passed to it?
+a)The trailing argument will be the default argument.
+b)The first argument will be the default argument.
+c)The middle argument will be the default argument.
+d)All the argument will be the default argument.
+
+
+60)What is the output of the Program?
+class Base
+{
+    int x, y;
+    public:
+    int z;
+    public: 
+    Base()
+    {
+        x = y = z = 0;
+    }
+    void Display(void)
+    {
+        cout<< x << " " << y << " " << z << endl;
+    }
+};
+class Derived : public Base
+{
+    int x, y; 
+    public:
+    Derived(int xx = 65, int yy = 66) 
+    {
+        y = xx; 
+        x = yy;
+    }
+    void Display(void)
+    {
+        cout<< x << " " << y << " "<<z;
+       
+    }
+};
+int main()
+{
+    Derived objD;
+    objD.Display();
+    return 0; 
+}
+
+a)000
+b)66 65 0
+c)66 65 garbage
+d)none of the above.
+
+
+61)What is the output of the Program?
+#include <iostream>
+using namespace std;
+class Demo
+{
+    int x, y; 
+    public:
+    void SetValue(int &a, int &b)
+    {
+        a = 100;
+        x = a;
+        y = b;
+        Display();
+    }
+    void Display()
+    {
+        cout<< x << " " << y; 
+    }
+};
+int main()
+{
+    int x = 10;
+    Demo d; 
+    d.SetValue(x, x);
+    return 0;
+}
+
+
+a)The program will print the output 100 10.
+b)The program will print the output 100 100.
+c)The program will print the output 100 garbage.
+d)It will result in a compile time error.
+
+
+62)What is the output of the Program?
+#include <iostream>
+using namespace std;
+class Demo
+{
+    public:
+    Demo(int xx)
+    {
+        cout<< xx;
+    }
+    ~Demo()
+    {
+        cout<< "Final";
+    }
+};
+int main()
+{
+   Demo *ptr = new Demo('B');
+    return 0; 
+}
+a)Compile time error
+b)B
+c)garbage
+d)66
+
+
+
+63)What is the output of the program?
+#include<iostream>
+using namespace std;
+class Base
+{   
+    public:
+    Base()
+    {
+        cout<< "Base OK. "; 
+    }
+     ~Base()
+    {
+        cout<< "Base OK. "; 
+    }
+    
+};
+class Derived: public Base
+{
+    public:
+    Derived()
+    { 
+        cout<< "Derived OK. "; 
+    }
+    ~Derived()
+    { 
+        cout<< "Derived OK. "; 
+    }
+};
+int main()
+{
+    Derived b;
+    return 0;
+}
+a)Base OK. Derived OK.
+b)Base OK. Base OK.Derived OK. Derived OK.
+c)Base OK. Derived OK.Base OK. Derived OK.
+d)Base OK. Derived OK. Derived OK. Base OK
+
+
+64)
+Assume that Honda is an instance of the Car class,
+and that Car class has a member function named run.
+Which of the following is a correct call to the run function?
+a) Honda->run;
+b) Honda.run();
+c) run()
+d) Honda()
+
+
+65)#include <iostream>
+using namespace std;  
+int main()  
+{  
+int array[] = {10, 20, 30};  
+cout << -2[array];  
+return 0;  
+}  
+
+a)-30
+b)compiler error
+c)garbage value
+d)-15
+
+66)Which of the following statement is correct about Virtual Inheritance?
+
+a)It is a technique to ensure that a private member of a base class can be accessed
+b)It is a technique to optimize the multiple inheritances
+c)It is a technique to avoid the multiple inheritances of the classes
+d)It is a C++ technique to avoid multiple copies of the base class into the derived or child classes
+
+67)Which of the following offers a programmer the facility of using a specific class object into other classes?
+a)Polymorphism
+b)Abstraction
+c)Inheritance
+d)Composition
+
+68)Among the following, which statement is correct about the Modularity?
+a)Modularity means hiding the parts of the program
+b)Modularity refers to dividing a program into subsequent small modules or independent parts
+c)It refers to overloading the program's part
+d)Modularity refers to wrapping the data and its functionality into a single entity
+
+
+69. What is the output of the following code? 
+#include<iostream.h> 
+class professor{public:professor(){cout<<"professor ";};}; 
+class researcher{public: researcher(){cout<<"researcher ";};}; 
+class teacher: public professor{public: teacher(){cout<<"teacher ";};}; 
+class myprofessor: public teacher, public virtual researcher 
+{public:myprofessor(){cout<<"myprofessor ";};}; 
+int main() 
+{ 
+myprofessor obj; 
+return 0; 
+} 
+(a) professor researcher teacher myprofessor 
+(b) researcher professor teacher myprofessor
+ (c) myprofessor teacher researcher professor 
+(d) myprofessor researcher professor teacher 
+
+70. What is the output of the following code? 
+#include<iostream.h> 
+class Parent 
+{ 
+public: 
+Parent(){Status();} 
+virtual ~Parent() { Status();} 
+virtual void Status(){cout<<"Parent ";} 
+}; 
+class Child: public Parent 
+{ 
+public: 
+Child(){Status();} 
+virtual ~Child() { Status();} 
+virtual void Status(){cout<<"Child ";} 
+}; 
+void main() 
+{ 
+Child c; 
+} 
+
+(a) Parent Parent 
+(b) Parent Child Child Parent
+ (c) Child Parent Parent Child 
+(d) Error
+
+
+ 71. What is the output of the following code? 
+#include<iostream.h> 
+int count=0; 
+class obj 
+{ 
+public : 
+obj(){count++;} 
+~obj(){count--;} 
+}; 
+int main() 
+{ 
+obj A,B,C,D,E; 
+obj F; 
+{ 
+obj G; 
+} 
+cout<<count; 
+return 0; 
+} 
+(a) 0 
+(b) 5 
+(c) 1 (d) 6
+
+
+ 72. What is the output of the following code? 
+#include<iostream.h> 
+int main() 
+{ 
+for(int ii=0;ii<3;++ii) 
+{ 
+switch(ii) 
+{ 
+case 0:cout<<"zero "; 
+case 1:cout<<"one ";continue; 
+case 2:cout<<"two ";break; 
+} 
+} 
+return 0; 
+} 
+(a) zero one one two b)error
+ (c) zero two 
+
+73. What is the output of the following code? 
+#include<iostream.h> 
+class obj 
+{ 
+public : 
+obj(){cout<<"in ";} 
+~obj(){cout<<"out ";} 
+}; 
+int main() 
+{ 
+obj A,B; 
+{ 
+obj D; 
+} 
+obj E; 
+return 0; 
+} 
+
+
+74. What is wrong in the following code? 
+#include<iostream.h> 
+class Base 
+{ 
+public : 
+Base(){}; 
+virtual ~Base(){}; 
+}; 
+class Derived : protected Base 
+{ 
+public: 
+virtual ~Derived(){}; 
+}; 
+int main() 
+{ 
+Base *pb = new Derived(); 
+return 0; 
+
+(a) There is nothing wrong 
+(b) One cannot have a ‘Base’ pointer to ‘Derived’ since it is not derived publicly
+ (c) One need a derived class pointer to point to a derived class. 
+(d) One required to code a constructor for Derived.
+
+
+75. What makes a class abstract? 
+(a) The class must not have method 
+(b) The class must have a constructor that takes no arguments 
+(c) The class must have a function definition equal to zero
+ (d) The class may only exist during the planning phase 
+
+76. 
+#include<iostream.h> 
+class Base 
+{ 
+int static i; 
+public: 
+Base(){} 
+}; 
+class Sub1: public virtual Base{}; 
+class Sub2: public Base{}; 
+class Multi: public Sub1, public Sub2 {}; 
+void main() 
+{ 
+Multi m; 
+} 
+In the above program, how many times Base’s constructor will be called? 
+(a) 1 (b) 2
+ (c) 3 
+(d) none
+
+77. 
+#include<iostream.h> 
+namespace N1 
+{ 
+int f(int n) {return n*2;} 
+} 
+namespace N2 
+{ 
+int f(double n) {return n*3;} 
+} 
+void main() 
+{ 
+using N1::f; 
+int i1=f(1.0); 
+using N2::f; 
+int i2=f(1.0); 
+} 
+In the above code what would be the values of i1 and i2 
+(a) i1=2 i2=2 
+(b) i1=2 i2=3
+ (c) i1=3 i2=2
+
+78. What is the output of the following code? 
+#include<iostream.h> 
+int a = 1; 
+void main() 
+{ 
+int a = 100; 
+{ 
+int a = 200; 
+{ 
+int a = 300; 
+cout<<a<<","; 
+} 
+cout<<a<<","; 
+} 
+cout<<a<<","; 
+cout<<::a<<","; 
+} 
+(a) Error 
+(b) 100, 200, 300, 100, 
+(c) 300, 200, 100, garbage, 
+(d) 300, 200, 100, 1,
+
+ 79. What is the output of the following code? 
+#include<iostream.h> 
+void main() 
+{ 
+int x=10; 
+(x<0)?(int a =100):(int a =1000); 
+cout<<a; 
+} 
+
+80. What is the output of the following code? 
+#include<iostream.h> 
+void main() 
+{ 
+int a = 0; 
+cout<<(a = 10/a); 
+} 
+
+
+81. What is the output of the following code? 
+#include<iostream.h> 
+void main() 
+{ 
+char str1[]=”India”, str2[]=”India”; 
+if(str1==str2) 
+cout<<”Both the string are same”; 
+else 
+cout<<”Both the string are not same”; 
+} 
+(a) Both the string are same 
+(c) Compile Time error 
+(b) Both the string are not same
+ (d) Runtime Error 
+===============================================================
+
+FIND THE OUTPUT OF GIvEN PROGRAmS
+
+
+82. What is the output of the following code if user enters “This is a test”? 
+#include<iostream.h> 
+#include<string.h> 
+void main() 
+{ 
+char str[8]; 
+cin>>str; 
+cout<<str; 
+} 
+
+ 83. What is the output of the following code? 
+#include<iostream.h> 
+void main() 
+{ 
+int arr[] = {10,20,30,40,50}; 
+int *ptr = arr; 
+cout<< *ptr++<<" "<<*ptr; 
+} 
+
+84
+#include <iostream>  
+using namespace std;  
+int main()  
+{  
+  char names[5][8] = {"rohan","geeta","rahul","rohit","rachana"};  
+    for(int i=0;i<=5;i++)  
+    { 
+		 cout << names[i] << endl; 
+		 cout<< *names[i]<<endl;
+		 cout<<*(names+1)+0<<endl;
+    }
+    cout<<"---------------------------------------";
+    for(int i=0;i<=5;i++)  
+    { 
+        for(int j=0;j<=5;j++)
+        {
+            cout<< names[i][j];
+        }
+        cout<<endl;
+    }
+    cout<<"======================================="<<endl;
+    for(int i=0;i<=5;i++)  
+    { 
+        for(int j=0;j<=5;j++)
+        {
+            cout<<*(names+i)+j<<endl;
+        }
+        cout<<endl;
+    }
+    
+    cout<<sizeof(names); 
+}
+
+
+85)class A
+{
+	public :
+	~A()
+	{
+		cout<<"In A's Destructor";
+	}
+};
+class B :public A
+{
+	public :
+	~B()
+	{
+		cout<<"In B's Destructor";
+	}
+};
+int main()
+{
+A * aptr=new B();
+delete aptr;
+}
+
+86
+#include <iostream> 
+using namespace std; 
+  
+// base class 
+class Base { 
+public: 
+    virtual void function1() 
+    { 
+        cout << "Base function1()" << endl; 
+    } 
+    virtual void function2() 
+    { 
+        cout << "Base function2()" << endl; 
+    } 
+    virtual void function3() 
+    { 
+        cout << "Base function3()" << endl; 
+    } 
+}; 
+  
+// class derived from Base 
+class Derived1 : public Base { 
+public: 
+    // overriding function1() 
+    void function1() 
+    { 
+        cout << "Derived1 function1()" << endl; 
+    } 
+    // not overriding function2() and function3() 
+}; 
+  
+// class derived from Derived1 
+class Derived2 : public Derived1 { 
+public: 
+    // again overriding function2() 
+    void function2() 
+    { 
+        cout << "Derived2 function2()" << endl; 
+    } 
+    // not overriding function1() and function3() 
+}; 
+  
+// driver code 
+int main() 
+{ 
+    // defining base class pointers 
+    Base* ptr1 = new Base(); 
+    Base* ptr2 = new Derived1(); 
+    Base* ptr3 = new Derived2(); 
+  
+    // calling all functions 
+    ptr1->function1(); 
+    ptr1->function2(); 
+    ptr1->function3(); 
+    ptr2->function1(); 
+    ptr2->function2(); 
+    ptr2->function3(); 
+    ptr3->function1(); 
+    ptr3->function2(); 
+    ptr3->function3(); 
+  
+    // deleting objects 
+    delete ptr1; 
+    delete ptr2; 
+    delete ptr3; 
+  
+    return 0; 
+}
+
+86
+#include<iostream>
+using namespace std;
+class Person {
+   // Data members of person 
+public:
+    Person(int x)  { cout << "Person::Person(int ) called" << endl;   }
+};
+ 
+class Faculty : public Person {
+   // data members of Faculty
+public:
+    Faculty(int x):Person(x)   {
+       cout<<"Faculty::Faculty(int ) called"<< endl;
+    }
+};
+ 
+class Student : public Person {
+   // data members of Student
+public:
+    Student(int x):Person(x) {
+        cout<<"Student::Student(int ) called"<< endl;
+    }
+};
+ 
+class TA : public Faculty, public Student  {
+public:
+    TA(int x):Student(x), Faculty(x)   {
+        cout<<"TA::TA(int ) called"<< endl;
+    }
+};
+ 
+int main()  {
+    TA ta1(30);
+}
+====================================================================================
+1.	Write a function swap two swap two numbers following these approaches:
+a.	Pass by value
+b.	Pass by address
+c.	Pass by reference
+
+2.	In the Person class add a static data member count and the following methods:
+a.	Default constructor
+b.	Parameterized constructor (Use this pointer )
+c.	Copy constructor
+d.	Static method DisplayCount
+In the main method create an array of 5 objects and invoke all the appropriate methods.
+Also create an object of this class dynamically using new and then delete it at run time.
+
+3.	Create a class Complex with data members real and imaginary
+a.	Default constructor
+b.	Parameterized constructor
+c.	Copy constructor
+d.	Static method DisplayCount
+In the main method create an array of 5 objects and invoke all the appropriate methods.
+Also create an object of this class dynamically using new and then delete it at run time.
+
+4.	Create a class Time with data members hh,mm,sec. Add the following methods:
+a.	Default constructor
+b.	Parameterized constructor
+c.	Copy constructor
+
+5.	Write a program to create a class player with members as Name,Id,Role, Avg runs, wkts taken and innings played. Create an array of 10 players and write functions to display information of player with  maximum , maximum wkts takes.
+
+6.	Create a Class named Array with a pointer to integer as member. Allocate memory dynamically for this pointer in constructor. Write appropriate constructors (default, parameterized and copy). Also add destructor. 
+
