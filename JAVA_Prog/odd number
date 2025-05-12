@@ -1,0 +1,27 @@
+
+/*
+accept number from keyboard, display all odd numbers between 
+1 and the given number
+*/
+
+import java.util.Scanner;
+
+class OddNumber{
+public static void main(String args[]){
+    
+    Scanner sc=new Scanner(System.in);
+    system.out.println("Entre the odd number");
+     int num=sc.nextInt();
+system.out.println("odd  number from 1"+number);
+for(int i=1;i<=num;i++){
+ if(i%2!=0){
+
+   system.out.println(i);
+
+}
+ sc.close();
+}
+
+          
+}
+}
