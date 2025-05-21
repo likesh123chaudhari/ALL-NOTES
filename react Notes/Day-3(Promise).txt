@@ -1,0 +1,381 @@
+encapsulate promise in function:
+note:if u make promise in function ,we should return the promise.so that developer shld get  promise ref to handle the promise
+
+ <script>
+        function evenpromise(x){
+        var mypromise=  new Promise((resolve,reject)=>{
+            if(x%2==0)
+            resolve();
+            else
+            reject();
+            
+
+        });
+        return mypromise;
+    }
+        var ref=evenpromise(7);
+    
+        ref.then(()=>{
+            console.log("promise fulfilled,no is even");
+        }).catch(()=>{
+
+            console.log("promise rejected,no is odd");
+        });
+        
+      
+        
+    </script>
+=====================================
+
+
+    <script>
+        function evenpromise(x){
+        return new Promise((resolve,reject)=>{
+            if(x%2==0)
+            resolve();
+            else
+            reject();
+            
+
+        });
+      
+    }
+        evenpromise(4).then(()=>{
+            console.log("promise fulfilled,no is even");
+        }).catch(()=>{
+
+            console.log("promise rejected,no is odd");
+        });
+        
+      
+        
+    </script>
+==========================================================
+eg:
+class A{
+int x;
+}
+new A().x
+==============================================================================
+in the above example we can also pass few arguments in resolve and the reject methods,there may be certain data that we need to get in then or catch callback function.
+
+   <script>
+        function evenpromise(x){
+            var a=[10,20,30,40];
+        return new Promise((resolve,reject)=>{
+            if(x%2==0)
+            resolve(a);
+            else
+            reject();
+            
+
+        });
+      
+    }
+        evenpromise(4).then((a)=>{
+            console.log(a);
+            console.log("promise fulfilled,no is even");
+        }).catch(()=>{
+
+            console.log("promise rejected,no is odd");
+        });
+        
+      
+        
+    </script>
+========================================
+
+================================================================
+note : now prevent callback hell using promises. will create 3 promise for 3 different tsk.
+earlier we were returning factorial value.now we will return promise.
+
+note: whenever we r using function,then instead of returning actual data,u shld returned the promise and  when the promise is resolve,we will pass that result in the argument of resolve. so when the promise is resolve only in that case we shld get the value. so dont return the result,return promise.
+
+<script>
+      const factorial=(n)=>{
+        return new Promise((resolve,reject)=>{
+            console.log("calculating factorial");
+            setTimeout(()=>{
+                var f=1;
+            for(i=1;i<=n;i++)
+            {
+                    f=f*i;
+            }
+            resolve(f);
+
+            },5000);
+
+        });
+
+
+      }
+
+factorial(3).then((result)=>{
+console.log("factorial is ",result);
+}).catch(()=>{
+
+});
+
+
+        
+    </script>
+    
+//factorial() is returning the promise and not the actual data.
+after 5 min callback will be executed.
+========================================================================
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const factorial=(x)=>{
+            return new Promise((resolve,reject)=>{
+                console.log("calculating factorial");
+                setTimeout(()=>{
+                    var f=1;
+                    for(i=1;i<=x;i++){
+                        f=f*i;
+                       }
+                        resolve(f);
+
+                },5000);
+            });
+        }
+        const sum=(a,b)=>{
+            return new Promise((resolve,reject)=>{
+                console.log("calculating sum");
+                setTimeout(()=>{
+                    var res=a+b;
+                      resolve(res);
+                },1000);
+              
+
+            });
+
+        }
+        const square=(x)=>{
+            return new Promise((resolve,reject)=>{
+                console.log("calculating square");
+                setTimeout(()=>{
+                    var res=x*x;
+                    resolve(res);
+                },2000);
+
+            });
+
+        }
+
+
+
+       factorial(5).then((res)=>{
+            console.log("factorial is ",res);
+            return sum(10,20)
+       })
+       .then((sumresult)=>{
+        console.log("summation is",sumresult);
+        return square(5);
+       })
+       .then((sqres)=>{
+            console.log("square is ",sqres);
+       })
+       .catch((error)=>{
+        console.log("error due to some reason")
+       })
+       
+        
+    </script>
+
+    
+</body>
+</html>
+=====================================================
+
+1.fetch id from server by calling api
+2)based on id fetch entire data from server
+3)check eligibility voting
+===========================
+
+
+<script>
+     const fetchids=()=>{
+return new Promise((resolve,reject)=>{
+console.log("fetching ids");
+setTimeout(()=>{
+var ids=[101,102,103,104];
+if(ids.length>0){
+resolve(ids);
+}
+else{
+reject("error in fetching ids");
+}
+
+},5000);
+});
+}
+
+
+
+
+fetchids()
+.then((idvalues)=>{
+console.log("ids from server",idvalues);
+ 
+})
+
+.catch((error)=>{
+console.log(error);
+});
+
+        
+    </script>
+==========================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    const fetchids=()=>{
+        return new Promise((resolve,reject)=>{
+            console.log("fetching ids from server");
+            setTimeout(()=>{
+                var ids=[101,102,103,104,105];
+                if(ids.length>0)
+                resolve(ids);
+                else
+                reject("server not responded with ids");
+            },5000);
+
+        });
+    }
+    const fetchdata=(id)=>{
+        return new Promise((resolve,reject)=>{
+            console.log("fetching data from server ");
+            setTimeout(()=>{
+
+                var data={userid:id,name:'rahul',age:20};
+                if(data)
+                resolve(data);
+                else
+                reject("error while fetching data from server");
+            },3000);
+
+        });
+
+    }
+    const checkeligibility=(age)=>{
+        return new Promise((resolve,reject)=>{
+            console.log("checking for eligibility ");
+            setTimeout(()=>{
+
+                if(age>=18)
+                resolve("eligible for voting");
+                else
+                reject("not eligible for voting");
+            },1000);
+
+        });
+
+
+    }
+       
+    fetchids().then((ids)=>{
+        console.log("server responded with ids",ids);
+       return fetchdata(ids[1]);
+
+    })
+    .then((data)=>{
+        console.log(data);
+        return checkeligibility(data.age)
+    })
+    .then((msg)=>{
+        console.log(msg);
+
+    })
+    .catch(()=>{
+        console.log("something went wrong");
+    })
+        
+    </script>
+
+    
+</body>
+</html>
+
+
+==================================================
+there are 2 ways to handle any promise
+1)use the() and catch()
+2)use aysnc and await keywords
+
+if a function call is returning a promise then should write await keyword just  before the function call.
+await factorial();
+await sum();
+await square();
+
+==>await means if factorial() is resolve then only sum() will get executed.
+==>if factorial is rejected then how to handle rejection.thats why use try and catch
+
+
+
+try{
+
+await factorial();
+await sum();
+await square();
+}
+catch(error){
+console.log(error);
+}
+
+note:await should be encapsulated within function
+
+
+async function handlepromise(){
+try{
+
+await factorial();
+await sum();
+await square();
+}
+catch(error){
+console.log(error);
+}
+
+}
+
+
+
+
+============================================
+note: if promise function call has await keyword as prefix then we will get that value in return which is passed as argument in the resolve.
+note:await will do 2 things
+1)handling the resolution of promise
+2)making the next statement to wait for current statement to execute
+3)we will get value directly as a data which has passed from resolve()
+
+async function handlepromise(){
+try{
+	var ids=await fetchids();
+	console.log("ids from server",ids);
+    var userdata=await fetchdata(ids[2]);
+    console.log("user data ",userdata);
+    const status=await checkeligiblity(userdata.age);
+    console.log(status);
+    }
+catch(error){
+console.log(error);
+}
+}
+
+handlepromise();
+==============================================================
+
