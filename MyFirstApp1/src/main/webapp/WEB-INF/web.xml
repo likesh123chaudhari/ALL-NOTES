@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
+  <display-name>MyFirstApp1</display-name>
+  
+  <welcome-file-list> 
+    <!--<welcome-file>hello.html</welcome-file>-->
+    <welcome-file>subtract.html</welcome-file>
+     
+  </welcome-file-list>
+   <!--   
+  <servlet>
+  <servlet-name>hello</servlet-name>
+  <servlet-class>com.demo.servlet.MyFirstServlet</servlet-class>
+  
+  <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>hello</servlet-name>
+  <url-pattern>/myhello</url-pattern>
+  </servlet-mapping>
+  
+  -->
+  <servlet>
+  <servlet-name>calculate</servlet-name>
+  <servlet-class>com.demo.servlet.CalculateServlet</servlet-class>
+  
+  <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>calculate</servlet-name>
+  <url-pattern>/calculate</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  <servlet-name>subtract</servlet-name>
+  <servlet-class>com.demo.servlet.SubtractServlet</servlet-class>
+  
+  <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>subtract</servlet-name>
+  <url-pattern>/subtract</url-pattern>
+  </servlet-mapping>
+</web-app>
