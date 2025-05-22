@@ -1,0 +1,1075 @@
+React Js
+
+==>React is a library using which we can develop frontend/ui for webapplication.
+React is a library using which we can develop frontend/ui for single page appliction.
+
+FAQ:
+Withour react can we make webapplication?
+
+FAQ:
+Without react js how our web application will look?
+
+========================================================================================  
+challenge
+1)code reusability is not available in plain html.
+2)development and maintenance of the code is very costly.  updation become difficult
+3)whenever u click on link,browser will take reload and new content will be visible.this is behaviour of regular website.
+nature of regular website is it will ask for complete page from server.
+4)when components are same through out the pages then also browser will load them again and again. 
+ex:https://lasagesse.in/download-tc/
+5)for getting spa experience,we have to make use of heavy dom because only 1 html page will be there and on that page we have to load contents dynamically.building spa is difficult from the scratch approach.
+
+==>Now a days,We are having such webapplication where browser will not take reload and still we can access new contents.entire page will not take reload .performance of the application gets improves.
+ex:in youtube
+======================================================================
+advantage is 
+==>we are increasing user experience and performance gets increase using spa. in spa ,when we click on links, browser should not take reload. new contents will be replaced dynamically.when the content of 2 pages are same they will not get load,keep it same and just update the content which is new to our page.
+==================================================================================================
+
+FAQ:
+SPA is going to have a single html file.if we want to display different content on same html file. then how it will happen?
+
+==>based on the routing/url, content will be changed. as soon as the url changed,content will also change ON SINGLE HTML FILE without reloading the browser.
+==>react js has inbuilt architecture for building spa.
+==================================================================================
+
+==>In SPA , we always used to follow component based architecture. we should break down entire page into various components instead of web pages.
+==>Component:any UI element which is visible on webpage is called component.In Spa, we have to create and display components .the components which u have developed should be display in single html file. based on routing,component will be  updated,based on routing,react js will display different different component on different different url
+==>we have to specify on which url,we have to show which component.
+
+============================================================================
+==>libraries / frameworks wi   ll provide a cli tool to create a new project(predefined folder structure) 
+==>we have to install that tool which helps us to create new react project.
+==>react has provided 1 cli i.e create-react-app
+
+>>npm i -g nodemon
+>>nodemon index.js
+
+>>npm install -g create-react-app  
+>> create-react-app my-app 
+==>this cli will create my-app project
+
+=============================================================
+note:
+==>but with the new version,if u want to use cli,u dont need to install it. for that we need live internet connection.
+that is possible with the help of npx.
+
+>>npx nodemon index.js
+>>npx create-react-app my-app
+==> npx will search this cli in npx registry and from there it will execute lively.version updates will get  automatically.
+==================================================================
+
+==>when we create a react application using create-react-app cli bydefault it will give  app component for that it will give App.js. initally content will be display of app component.
+==>for every component we have to create js file
+home.js
+contact.js
+gallery.js
+
+==>create component in src folder
+
+========================================================================================
+
+>>code.   open vs
+>>cd myapp
+>>npm start   //project run
+
+output display on browser. content will be display from app component.
+react js supports hot-reloading-->whenever u make changes in the file,at the same time browser will be automatically reloaded,dont need to do refresh
+===============================================================
+
+==========================================================================
+
+
+
+class Student{
+	constructor(){
+		console.log("hello world")
+				}
+}
+var s1=new Student();
+
+//constructor is a function name which initilize the object.
+
+>>node class-demo.js
+======================================================================
+
+//define properties for an object,we have to give in constructor with the help of this keyword
+
+class Student{
+constructor(){
+this.id=10;
+this.name="suraj";
+}
+var s1=new Student();
+console.log(s1.id,s1.name);
+var s2=new Student();
+console.log(s2.id,s2.name);
+
+
+============================================================
+//para constructor
+
+class Student{
+constructor(id,name){
+this.id=id;
+this.name=name;
+}
+}
+var s1=new Student(101,"rr");
+console.log(s1.id,s1.name);
+var s2=new Student(102,"yy");
+console.log(s2.id,s2.name);
+======================================================================
+
+===================================================================================================
+class Student{
+constructor(id,name){
+this.id=id;
+this.name=name;
+}
+show()
+{
+	console.log(this.id);//if we want to access id of this current object
+	console.log(this.name);
+	console.log(id);//undefined(it will search for local/global variable whose name is id
+
+}
+}
+var s1=new Student(101,"rr");
+s1.show();
+var s2=new Student(102,"yy");
+s2.show();
+
+=====================================================
+How to create a component in react js
+two types of components are there
+1)class based component (created earlier): a component for which a class will be created
+2)function based component (created later): for creation of this component we use only function
+it is light weight component.
+
+================================================================================
+syntax to create a class component
+
+==>to create Home component,first create file Home.js in src folder
+note:the name of the file and component will be same
+ 
+
+export class Home extends Component {
+
+	render() //to provide somethimg
+{
+	return(
+	<div>
+	<h1> welcome to home</h1>
+	<div>
+
+);
+}
+}
+//render() is overriden method in this class .it is method of component class.
+render() will provide the html code for the component..return html element from this function
+==>whenever Home component is display,it will call render()  and return html element
+=================================================================================================
+
+==> whatever the name of the component will be name of the tag. inorder to display any component,we have to use that tag
+
+import {Home} from './Home'; //./ from same folder  . no need ofwriting .js
+function App()
+{
+return(
+<div>
+<Home> </Home>
+</div>
+
+
+);
+
+}
+
+>>npm start
+
+===================================================================================
+create 1 more component about component
+
+import {Component} from 'react';
+export class Home extends Component{
+
+    render()
+    {
+        return(
+            <div>
+                <h1>hello </h1>
+            </div>
+        );
+
+    }
+
+}
+--------------------------------------------------------------------------------------------------
+APP.js
+import logo from './logo.svg';
+import './App.css';
+import {Home} from './Home'
+
+function App() {
+  return (
+     <div>
+      <Home></Home>
+
+     </div>
+  );
+}
+
+export default App;
+=================================================================
+import { Component } from "react";
+
+export class About extends Component{
+    render(){
+        return(
+            <div>
+                <h1>About</h1>
+            </div>
+        );
+
+
+    }
+
+
+
+}
+=========================================================
+import logo from './logo.svg';
+import './App.css';
+import {Home} from './Home'
+import {About} from './About'
+function App() {
+  return (
+     <div>
+      <Home></Home>
+      <About></About>
+
+     </div>
+  );
+}
+
+export default App;
+
+
+
+======================================================================================
+
+Function Component
+
+syntax:
+function Home()
+{
+return(
+
+----html code---
+
+);
+}
+=====================================================
+
+export function Contact(){
+    
+    return(
+        <div>
+            <h3>phone:</h3><p>+91-888888888</p>
+        </div>
+    );
+
+
+}
+=================================================================
+import logo from './logo.svg';
+import './App.css';
+import {Home} from './Home'
+import {About} from './About'
+import { Contact } from './Contact'
+function App() {
+  return (
+     <div>
+      <Home></Home>
+      <About></About>
+      <Contact/>
+
+     </div>
+  );
+}
+
+export default App;
+=====================================================
+Note: we can only return single parent from a component
+
+
+return(
+
+<div>
+</div>
+<form>
+</form>
+
+
+)
+
+//error 2 parent element is not allowed
+
+=-=-=====================================================
+how we r writing html code in js file?
+==>js have extension with .jsx(java script and xml)
+
+xml -->represent data
+html -->display data
+in react , mix of xml and js (in app.js)
+
+==>react js internally created jxs file combo of js and xml
+==>jsx enables a  developer to write javascript code along with xml code.
+
+================================================================
+virtual dom
+
+
+
+==>whenever browser loads webpage, browser creates dom for that page.
+==>react will create one more layer on dom i.e virtual dom. react js works on virtual dom.the operations will be perform on virtual dom. 
+==>react js will create a dom for itself on the top of the actual browser dom and it will perform all the operations on this virtual dom only.
+==>virtual dom is faster and efficient as compared to actual dom.
+why?
+due to diffy algorithm/reconealiation.
+
+==>
+==============================================================
+both type of component are having 1 feature i.e props(attributes)
+
+ex:<p align=""> in html
+<img src="">
+==>as an html element is having attributes,similarly a react component will have props.
+tag and its attributes
+component and its props
+its the developer who will create props for the component.
+=========================================================================
+why props?
+Header component contain 1 title and 1 description
+will header component decides which title to print? no 
+ i want to print different title and description for all the components. 
+
+==>whenever any component cant decides its own contents, in that case we will use props. dynamically data will pass thru props.
+
+===================================================================
+Header component
+
+import { Component } from "react"
+
+export class Header extends Component{
+
+    render(){
+    
+    return(
+    <div>
+    <h1> heading title</h1>
+    <p> dummy description</p>
+    </div>
+    
+    );
+    
+    }
+    }
+    
+---------------------------------------------
+import {Component} from 'react';
+import {Header} from './Header'
+export class Home extends Component{
+
+    render()
+    {
+        return(
+            <div>
+                <Header/>
+                <h1>home </h1>
+            </div>
+        );
+
+    }
+
+}
+---------------------------
+import { Component } from "react";
+import { Header } from "./Header";
+
+export class About extends Component{
+    render(){
+        return(
+            <div>
+                <Header/>
+                <h1>About</h1>
+            </div>
+        );
+
+
+    }
+
+
+
+}
+===============================================
+import {Header} from './Header';
+export function Contact(){
+    
+    return(
+        <div>
+            <Header/>
+            <h3>phone:</h3><p>+91-888888888</p>
+        </div>
+    );
+
+
+}
+-------------------------------------
+o/p same title and description for all  component
+================================================================================================
+how to read props in class component?
+==>we have passed 2 props,title and description .inside the header component,we should received these 2 props.
+==>React js will create an object of all the props that are passed. 2 props will be created in the form of key-value pair in a single object. it will send this object in a class component . in class component props will be assigned into an instanc property and that instance property name is props.
+this.props
+<Header title="home title" description="home component"/>
+here react js will create an object with 2 key and value pairs
+{
+title:"home title",
+description:"home component"
+}
+   
+==>in a class component  json object will be assigned to a instance properrty named props can be accessed using this.props
+================================================
+
+solution:
+
+import {Component} from 'react';
+import {Header} from './Header'
+export class Home extends Component{
+
+    render()
+    {
+        return(
+            <div>
+                <Header title="home title" description="home component"/>
+                 <h1>home </h1>
+            </div>
+        );
+
+    }
+
+}
+
+
+
+===============================================
+==>this.props refers to json object and from that object we can take out value of title and description.
+export class Header extends Component{
+
+import { Component } from "react"
+
+export class Header extends Component{
+
+    render(){
+    
+    return(
+    <div>
+    <h1>{this.props.title} </h1>
+    <p>{this.props.description}</p>
+
+    </div>
+    
+    );
+    
+    }
+    }
+    
+
+================================================
+
+How to receive props in function component
+
+React js will create an object of all props and it will pass that object in the argument(anyname) of the function
+
+export function Header(props ){
+        return(
+        
+        <div>
+        <h1>{props.title}</h1>
+        <p>{props.description}</p>
+        </div>
+        
+        )
+        }
+=========================================================================================
+
+==>A component cant decide the value for its props
+==>A component  cant change the value of its props inside the class/function
+
+export function Header(props ){
+return(
+
+<div>
+<h1>{props.title}</h1>
+<p>{props.description}</p>
+</div>
+
+)
+}
+//cant change the value of props in header component.header is having 2 props title and description. in header.js file we cant update/change title and description .
+==>If we want to change the value,then you have to go to that component where u r displaying header
+</header> and update the value there.
+==================================================================
+==>sometimes we r in need of property that regularly needs update.
+==>every component is going to have 2 properties  i.e props and state.props is not in the control of the componet .we can only read the value of props.we cant initialise/ change it. but component is having a property that can be updated/modified from inside of the component.i.e state
+==>the value of the state is decided by component itself and component itself updates the value of states. value of props is decided by outside world.
+==>component cant initialize its props  and cant change the value.component can only read the value of props.
+
+
+create a scoreboard  and create 2 buttons + - (use case is whenever i will click on + button score increased by 4  and click on - score shld decreased by 1)    
+====================================================================================================
+state in class component.
+//to initilaise something in class,we will use constructor.
+//any class received props in an instance property .  
+//similarly to initialise state,we are getting 1 instance property with the name state which is refer as this.state in class component. component can have any number of states.
+//state is inherited from component class
+
+class ScoreBoard extends Component
+{
+
+//initialise property/state
+constructor(){
+	this.state={}
+
+}
+}
+
+//assigned json object in this.state which contains lots of key-value pair.
+//we can change state at any point of time.
+
+================================================
+ScoreBoard.js
+
+import {Component} from "react";
+export class ScoreBoard extends Component
+{
+    constructor(){
+        super();
+        this.state={score:0  /*component will decide the value of state and component can update the value*/
+
+        }
+    }
+    render(){
+        return(
+            <div>
+                <h1>{this.state.score}</h1>
+                <button>+</button>
+                <button>-</button>
+            </div>
+        );
+    }
+
+}
+
+
+---------------------------------------------------------------
+import logo from './logo.svg';
+import './App.css';
+import {ScoreBoard} from './ScoreBoard';
+function App() {
+  return (
+     <div>
+      <ScoreBoard></ScoreBoard>
+
+     </div>
+  );
+}
+
+export default App;
+---------------------------------------------------------------
+note:if u r creating child constructor,then u have to call super class constructor explicitly.
+==========
+====================================================
+
+
+//handle click event for button+ and -
+==>onclick  is attribute in js but in react onClick become props.
+follows camelcase.
+==> we dont have to call function,we have to refer the function,function will be created at class level.function will call internally.
+==>u have to refer which function to call on onclick event.
+==>in reactjs to handle the events, we need to pass reference of the function.
+
+import {Component} from "react";
+export class ScoreBoard extends Component
+{
+    constructor(){
+        super();
+        this.state={score:0  /*component will decide the value of state and component can update the value*/
+
+        }
+    }
+    incrementScore(){
+
+        alert("+ clicked");
+        
+        }
+        decrementScore(){
+
+            alert("- clicked");
+            
+            }
+            
+    render(){
+        return(
+            <div>
+                <h1>{this.state.score}</h1>
+                <button onClick={this.incrementScore}>+</button>
+                <button onClick={this.decrementScore}>-</button>
+            </div>
+        );
+    }
+
+}
+=========================================================================================
+
+how to change score value
+
+==>whenever state of the component gets changed/update, ui component will re-render. render() will be called internally.it will always shows new value for updates.
+==>whenever state is updated or modified, at the same moment component will be re-rendered.i.e render() will call again for that component so that ui can display updated data.
+==>in re-render process, button will not be loaded again. work according to diffy algorithm.
+============================================================================
+how to update state
+to update the state of class  component,we will call setState().
+=======================================================
+
+it is not prefer to use this.state.score=3;// update will happen, but render() wont call again.
+so if we want state to be update and ui also re-render, for that we have to go for setState()
+like
+this.setState({updated state to pass});
+
+
+import {Component} from "react";
+export class ScoreBoard extends Component
+{
+    constructor(){
+        super();
+        this.state={
+            score:0
+
+        }  
+        this.incrementScore=this.incrementScore.bind(this);
+        this.decrementScore=this.decrementScore.bind(this);
+        
+        }  
+      
+    
+    incrementScore(){
+
+        this.setState({score:4});
+        
+        }
+        decrementScore(){
+
+            this.setState({score:1});
+            
+            }
+            
+    render(){
+        return(
+            <div>
+                <h1>{this.state.score}</h1>
+                <button onClick={this.incrementScore}>+</button>
+                <button onClick={this.decrementScore}>-</button>
+            </div>
+        );
+    }
+
+}
+============================================================================================
+//everytime we click on + button score will 4. 
+to update the value for  that we need to read current value of score and then increment by 4
+
+import {Component} from "react";
+export class ScoreBoard extends Component
+{
+    constructor(){
+        super();
+        this.state={
+            score:0
+
+        }  
+        this.incrementScore=this.incrementScore.bind(this);
+        this.decrementScore=this.decrementScore.bind(this);
+        
+        } 
+      
+    
+    incrementScore(){
+
+        this.setState({score:this.state.score+4});
+        
+        }
+        decrementScore(){
+
+            this.setState({score:this.state.score-1});
+            
+            }
+            
+    render(){
+        return(
+            <div>
+                <h1>{this.state.score}</h1>
+                <button onClick={this.incrementScore}>+</button>
+                <button onClick={this.decrementScore}>-</button>
+            </div>
+        );
+    }
+
+}
+=====================================================
+why to write this.incrementScore=this.incrementScore.bind(this);?
+
+incrementscore(){
+console.log(this);//gives undefined since it will  not point to object of the class. what i want that this keyword in increment function should point towards the this keyword which is in constructor.
+}
+//this keyword in js can be used outside a class also.
+class student{
+this->object of the class
+}
+function factorial(){
+this  //this will refer to function object.
+}
+this // this will refer to window object
+//this is behaving differently
+
+
+solution is:
+what i want that this keyword in increment function should point towards the this keyword which is in constructor.
+fo that 
+this.incrementScore=this.incrementScore(this);
+//this refer to object of the class which is der in constructor should bind with incrementScore(). i.e both this willrefer to object of the class.
+==================================================================================
+How to deal with state in function component
+==>earlier when function components were newly introduced state feature is not available in function component.
+hooks:
+==>if we want to hang external thing we use hooks.
+if we want to use any class component feature in function component we have to use concept of hook.
+==>hook is just a function to which we will call to avail class component feature in function component.
+
+==>for each class component feature we are getting one corresponding hook  to implement it in a function component.
+==>Every hook is following naming convention:
+the name of hook must have a prefix i.e  "use"
+==>useState() is a hook that will add state feature in a function component.
+eg:useState(), useRef(),useContext();
+
+useState(initial-value);
+useState(initial-value);//one usestate will initilze only 1 state
+
+like
+  constructor(){
+        super();
+        this.state={
+            score:0
+	   team:"";
+
+        }  
+
+
+=======================================
+we need two things
+1)name/reference of the state and a function to update that state and these things will be returned by useState() and we will  receive these two things and we have to give them name.
+
+const [name(score),function(setScore)] = useState(initial value);
+
+const [score,setScore] = useState(0);
+score -->to use the value
+setscore->to update the value
+
+
+import { useStat e } from "react";
+
+export function ScoreCard(){
+    const [score,setScore]=useState(0);
+    const [player,setPlayer]=useState("rahul");
+    const incrementScore=()=>{
+        setScore(score+4);
+    }
+    const decrementScore=()=>{
+        setScore(score-1);
+    }
+    const changePlayerName=()=>{
+        setPlayer("ROHAN");
+    }
+    return(
+        <div>
+            <h1>{player}has scored{score}</h1>
+            <button onClick={incrementScore}>+</button>
+            <button onClick={decrementScore}>-</button>
+            <button onClick={changePlayerName}>changePlayer</button>
+        </div>
+    );
+}
+===================================================
+Lifecycle of a react component
+
+==>different function wiill be called on each and every phase of that particular entity.
+phases of component
+
+mounting phase:
+update phase
+unmounting phase
+
+in class component 2 methods of life cycle are der
+constructor():will be called once. 
+render():will be called in mounting as well as in update phase, when the state of the componet gets change. 
+shows inital data, loading symbol
+componentDidMount()-->will be call once just after the first initial rend
+er()
+use to fetch data from api. assign that data in state. and whenever state gets updated render() will be called again.
+================================================================================
+
+
+
+
+two types of process in js
+1)Synchronous:blocking nature
+each function in js by default will have synchronous nature.
+
+2)Asynchronous:unblocking nature
+
+==============================================================================
+
+==>Synchronus blocking nature:
+If multiple process are dependent on each other then we have no option other than sync.
+
+==>But if process are independent then all process should be executed aysnchronously.
+note:to make task asynchronous callback is used.
+
+=====================================================================
+==>whenever a function is called in js engine,it will call function call stack.factorial() is pushed into stack.now js engine will check whether u have make the task aysnc. then js engine will pushed this factorial in webapi(component of js engine).web api will handle all timer,api,async events.
+in webapi all the function will be executed separately. call stack will not block next function.call stack is ready to pick up next function . web api executing factorial at the same time,call stack will pick up next function.os will create threads to execute three functions(process) simultaneously.
+js doesnot support multithreading.
+==================================================================================
+how to create process aysnc?
+==>cpu is very fast.we are not having bulky operations that require 10 sec time. 
+we will create illusion that our function is taking that much amount of time so that 
+we can have idea how to write aysnc function.
+
+
+setTimeout(callback function,time in msec);
+==>delay the execution of the passed callback function by mentioned no of msec.
+==>setTimeout() will wait for certain amout of msec ,only after those msec it will invoke callback function.
+==>setTimeout(factorial,5000); //execute factorial() after 5 sec. so that we can have illusion that function is taking this much amout of time.
+==>it is callback function because they will wait for some event to occur for execution. factorial() will wait for setTimeout() to complete its execution for 5sec.
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const factorial=(n)=>{
+            var f=1;
+            for(i=1;i<=n;i++)
+            {
+                f=f*i;
+            }
+            console.log("factorial is ",f);
+        }
+        const sum=(x,y)=>{
+            var z=x+y;
+            console.log("sum is ",z);
+        }
+        const square=(r)=>{
+            var res=r*r;
+            console.log("square is ",res);
+        }
+        console.log("calculating factorial");
+        setTimeout(factorial,5000,5);
+        console.log("calculating sum");
+        setTimeout(sum,1000,5,2);
+        console.log("calculating square");
+        setTimeout(square,2000,2);
+    </script>
+    
+</body>
+</html>
+
+
+==>they are not going to block each other. its webAPI component of the browser  that will handling this async process.
+=================================================================================
+supposing we are making this process dependent and they required same time then how to implement it.
+//after 2 sec factorial() will execute then perform summation with the result of factorial value. 
+factorial and sum() is dependent on each other.
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+                
+        setTimeout((n)=>
+	{
+            console.log("calculating factorial");
+            var f=1;
+            for(i=1;i<=n;i++)
+            {
+                f=f*i;
+            }
+            console.log("factorial is ",f);
+                setTimeout((m)=>
+		{
+                    console.log("calculating sum");
+                    var z=f+m;
+                    console.log("sum is ",z);
+                    setTimeout((r)=>
+		    {
+                        console.log("calculating square");
+                        var res=z*z;
+                        console.log("square is",res);
+                    },3000);
+
+                },1000,10);
+             },5000,5);
+
+    </script>
+    
+</body>
+</html>
+       
+// entire function will be executed after 5 sec.
+this 2 settimeout is dependent on each other.
+==>we can write 1 callback() into another callback() when multiple dependent process are there.
+==============================================================
+whatever the value of sum ,i want to calculate square of that number.
+
+  <script>
+            
+      
+        setTimeout((n)=>{
+            console.log("calculating factorial")
+            var f=1;
+            for(i=1;i<=n;i++){
+                f=f*i;
+            }
+            console.log("factorial is "+f);
+            setTimeout(()=>{
+                console.log("calculating sum");
+                var sum=f+10;
+                console.log("sum is ",sum);
+                setTimeout(()=>{
+                    console.log("calculating square");
+                    var res=sum*sum;
+                    console.log("square is ",res);
+
+                },2000);
+            },1000);
+        },5000,2);
+       
+        
+    </script>
+================================================
+note: when we have multiple dependent operations, then always most likely we will end up writing one callback function into another callback function(nesting of the callback function).
+==>nesting of callback is known as callback hell.
+Above approach of writing the code is having few issues.
+1)nesting resulting into messy code
+2)hard to manage
+3)hard to debug
+4)readability is poor
+
+it is always recommended to avoid callback hell.
+=======================================================
+
+JS has intoduced a new concept i.e promise. using promise we can prevent/avoid callback hell.
+1)made promised tom at 10am will give treat ( will wait for certain event to occur in order to execute the promise)//create promise
+2)now its 10am promise execution
+3)after the promise execution it will be decided that promise if fulfilled or rejected.
+4)based on the promise state all the people will take suitable action
+=============================================================
+how to deal with promise in js
+
+1)we need to create a promise(whenever u r creating a promise ,u have to tell for which task u r creating promise)
+i m making promise that whatever a number is that number is always a even number.
+//promisify for our different task. while creating a promise we shld define the task.
+
+==>if we creating the promise,its the developer only who is going to know when yourpromise is getting fulfilled or when ur promise is getting rejected.
+==>while creating a promise we should define when our promise will be fulfilled/resolve and when it should be rejected.
+ex:promise for even number,if number is divisible by 2 for fulfilling the promise, if not then rejecting the promise.
+
+
+2)we need to execute the promise
+when promise has been executed, then we are having three state of promise
+1)pending (promise is not executed
+2)fulfilled (successful operation, promise has been completed successfully)
+3)rejected 
+
+
+3)handling the promise.
+based on the promise state,we need to take suitable actions.
+
+
+create promise->execute->handle the promise.
+=======================================================================
+
+to create a promise we need to create a Promise object.
+var mypromise=new Promise();
+
+============================================================
+to create a promise we need to create a promise object.
+var mypromise=new promise((resolve,rejected)=>{
+
+
+
+});
+
+==>when promise will be executed this callback function will be executed.
+callback() will defined the task for which promise has been made.
+  ==>two callback argument as a function we will get in the promise i.e resolve and rejection.
+resolve(); //to resolve the promise.
+reject();//to reject the promise.
+will call resolve and reject based on some conditions.
+
+
+
+create promise that every number is an even number
+var x=8;
+var mypromise=new promise((resolve,reject)=>{
+
+if(x%2==0){
+resolve();//state gets changed.mark promised as resolve.
+}
+else{
+reject();
+}
+
+});
+//based on the promise state,we need to perform certain operations
+mypromise.then(()=>{
+console.log("no is even promise fulfilled");
+}).catch(()=>{
+console.log("no is odd promise rejected");
+
+});
+
+
+
+//when page gets loaded,promise will be executed.
+to handle the promise we are getting 2 predefined functions:
+1)then():it executed in case of resolved promise
+2)catch()it executed in case of rejected promise
+
+to handle the promise we need the promise object and on the promise object we need to call then and catch function.
+==========================
