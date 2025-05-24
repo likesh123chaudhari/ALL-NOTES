@@ -1,0 +1,301 @@
+usecase:accept the city from user and according to city name entered  by user ,fetch weather data from weather api using ajax
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-lg-4">
+          <label  class="form-label">CITY</label>
+    <input type="text" class="form-control" id="cityvalue">
+    <input type="button" class="btn btn-primary mt-5" value="fetchvalue" onclick="getweather()">
+
+        </div>
+      </div>
+
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script>
+      function getweather()
+      {
+        const city=document.getElementById("cityvalue").value;
+        const xhr=new XMLHttpRequest();
+        xhr.open("GET",`http://api.weatherapi.com/v1/current.json?key=8495bbeeb55b4d2eb65131752252005&q=${city}&aqi=no`);
+        xhr.send();
+        xhr.onreadystatechange=()=>{
+          if(xhr.readyState==4 && xhr.status==200){
+            console.log(xhr.responseText);
+            const weatherresponse=JSON.parse(xhr.responseText);
+            console.log(weatherresponse);
+            console.log(weatherresponse.location.name);
+          }
+
+        }
+      }
+    </script>
+  </body>
+</html>
+==============================
+JS is having one predefined function i.e fetch() to perform request and response related operations.
+==>entire ajax cycle is maintained internally  by fetch().
+==>fetch() is promised based, it will not return  data directly,it will return promise. 
+fetch(url);
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-lg-4">
+          <label  class="form-label">CITY</label>
+    <input type="text" class="form-control" id="cityvalue">
+    <input type="button" class="btn btn-primary mt-5" value="fetchvalue" onclick="getweather()">
+
+        </div>
+      </div>
+
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+ <script>
+ async function getweather()
+      {
+        const city=document.getElementById("cityvalue").value;
+        try{
+        
+        const response=await fetch(`http://api.weatherapi.com/v1/current.json?key=8495bbeeb55b4d2eb65131752252005&q=${city}&aqi=no`);
+        console.log(response);
+        if(response.status==200){
+       const data= await response.json();
+       console.log(data);
+        }
+        }
+        catch(error){
+
+        }
+
+      }
+ </script>
+ 
+</body>
+</html>
+
+=================================================================
+API will be called and data will be received/fetch firstly in componentdidmount.the data which i get in the response of API  will be assigned that data into state. and from that state we are going to display that data in render(). 
+==>first constructur  will initialise state with empty array
+==>when first render() will be called ,it will display the empty array data or will render inital UI
+after that componentdidmount() will be called,api will be called, entire data from the api will be fetch as a response and assigned into state,when state is updated again ,render() will be called again and display the updated data.
+==>data will be assigned into users key of the state.we will going to perform iterations on users array and on number of iterations,  tr will be created.
+
+
+import { Component } from "react";
+export class UserData extends Component{
+    constructor()
+    {
+        super();
+        this.state={
+            users:[]             //we will get array of json object in response.
+        }
+    }
+    render(){
+        return(
+            <div>
+                <h1>LIST OF USERS</h1>
+                <table border={1} cellPadding={10}>
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>name</th>
+                            <th>email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+
+                </table>
+            </div>
+        ); 
+    }
+componentDidMount(){
+        fetch('https://jsonplaceholder.typicode.com/users').then((response)=>{
+            response.json().then((data)=>{
+                this.setState({users:data});
+            })
+
+        }).catch((error)=>{
+            console.log(error);
+        })
+    }
+}
+
+//fetch() will return promise object.
+//to fetch the actual data on the response object  we need to call json().json() will return a promisen which contains actual data
+
+
+
+=====================================================
+
+
+
+==================================================================
+//get new array from this array such that every element of  new array will be equal to the multiplication of existing array by 2 
+
+var arr=[10,3,7,18,6,5,8,4];
+const newarr =arr.map((item)=>{
+return 2*item;
+});
+console.log(newarr);
+
+map() is preddefined, used when we want to  perform certain operations on the original values to get new values in new array
+map() will accept callback function
+map()  will not modified current array ,it will create new array
+when we want to create new array from an existing array , in which no of element will going to same but we want to modify the element and store them in new array,in that case use map()
+in map() whatever we are returning the value. automatically that value will be stored in new array
+========================================================================================
+==>
+we have to perform iterations on users state  and no of users we are getting,we have to create new tr  elements for new users.
+use map()
+
+==>if u have any list or array ,if we want to display those array elements into ui ,we have to use map().
+==>in map() we have created new array by manipulating the existing array.original array will not change.
+==>we will need array of tr in render().
+
+==>when we have to display elements of an array /list we have to iterate over the array using map().
+==>to display multiple elements dynamically using render(),we need array of html elements.
+==>input==>[10,20,30,40,50], i want to display all the elements on ui  as a h1 tag
+
+<h1>10  </h1>
+<h1>20</h1>
+
+for this in render() we need to create an array of multiple h1 elements.
+o/p [<h1>10</h1>,<h1>20</h1>]
+
+==>for this reason we have to call map() in render(),reading the value from existing array,we need to create array of html elements.
+
+numbers=[10,20,30,40,50];
+render(){
+	return(
+	<div>
+		{
+			this.state.numbers.map((n)=>{
+					return(
+					<h1>{n}</h1>
+			)
+			})
+		}
+	
+	</div>
+
+);
+}
+=======================
+<tbody>
+                        {
+                            this.state.users.map((u)=>{
+                                return(
+                                    <tr>
+                                        <td>{u.id}</td>
+                                        <td>{u.name}</td>
+                                        <td>{u.email}</td>
+                                    </tr>
+                                )
+
+                            })
+                        }
+
+                    </tbody>
+
+===================================================
+
+===================================================
+
+componentDidUpdate();
+when component has been updated i.e after the render execution when the state has been updated.
+
+componentwillunmount->when component will ne unmounted so before actually unmounting  it  this function will be called.we can perform any cleanup operation.eg:cancel the request,
+
+
+==================================================
+
+==>in a function component if we want to use a lifecycle function then a hook is available i.e useEffect hook. by using useEffect hook we ==>can implement all the lifecycle function of a class component.
+useEffect(callback function,dependency-array);
+
+componentdidmount---->useEffect(()=>{
+},[]);
+by reading the empy dependency array,useEffect now will decide that it has to execute the passed callback only a single time that is just after the initial render()
+
+
+export function UserData(){
+    const [users,setUsers]=useState([]);
+    useEffect(()=>{
+        fetch('https://jsonplaceholder.typicode.com/users').then((response)=>{
+            response.json().then((data)=>{
+                setUsers(data);
+                console.log(data);
+            })
+
+        }).catch((error)=>{
+            console.log(error);
+        })
+
+
+    },[]);
+    return(
+        <div>
+            <h1>list of users</h1>
+            <table border={1} cellPadding={10}>
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>name</th>
+                            <th>email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       {
+                        users.map((u)=>{
+                            return(
+                                <tr>
+                                    <td>{u.id}</td>
+                                    <td>{u.name}</td>
+                                    <td>{u.email}</td>
+                                </tr>
+                            )
+
+                        })
+                       }
+
+                    </tbody>
+            </table>
+
+        </div>
+    )
+}
+
+==========================================
+
+
+
+
+
