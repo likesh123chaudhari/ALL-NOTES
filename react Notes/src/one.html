@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    const fetchids=()=>{
+        return new Promise((resolve,reject)=>{
+            console.log("fetching ids from server");
+            setTimeout(()=>{
+                var ids=[101,102,103,104,105];
+                if(ids.length>0)
+                resolve(ids);
+                else
+                reject("server not responded with ids");
+            },5000);
+
+        });
+    }
+    const fetchdata=(id)=>{
+        return new Promise((resolve,reject)=>{
+            console.log("fetching data from server ");
+            setTimeout(()=>{
+
+                var data={userid:id,name:'rahul',age:20};
+                if(data)
+                resolve(data);
+                else
+                reject("error while fetching data from server");
+            },3000);
+
+        });
+
+    }
+    const checkeligibility=(age)=>{
+        return new Promise((resolve,reject)=>{
+            console.log("checking for eligibility ");
+            setTimeout(()=>{
+
+                if(age>=18)
+                resolve("eligible for voting");
+                else
+                reject("not eligible for voting");
+            },1000);
+
+        });
+
+
+    }
+      
+    async function handlepromise(){
+        try{
+               var ids=await fetchids();
+               console.log("ids from server",ids);
+               var userdata =await fetchdata(ids[1]);
+                console.log("user data ",userdata);
+            const status=await checkeligibility(userdata.age);
+            console.log(status);
+
+        }
+        catch(error){
+            console.log(error);
+
+
+        }
+
+    }
+    
+    handlepromise();
+    </script>
+
+    
+</body>
+</html>
