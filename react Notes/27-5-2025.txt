@@ -1,0 +1,652 @@
+key id :2f74f2e347f24ac8b36a54a6a862e4d7
+How to process user input in react js?
+
+
+How to deal with form data in react js
+1)we have to create a state to store form data.
+2)In constructor initialize the state for form data with empty values.
+note:for every input field we have to create different state.
+3)We have to assign the field value into state when user starts typing.
+4)At the time of submission of form,we have to read the state inorder to get the form data.
+
+eg:
+formData:{name:"",phone:"",email:"",password:""}
+==>formData is an state which is an object which contains some data.
+
+5)we have to listen for onChange event for every input field(as soon as the user starts typing ,at that moment we have to assign name in the formData state.
+==>when a function has been called onto any event,then that function will always have an argument(current event object) that will contain an event object.
+==>target key is holding the object of that field on which the event has occured.
+
+Why we need event object?
+==>in our case we want to get the object of the input field on which user has typed something.
+so event object is having a key called as target using which we can get the object of field.
+===================================================================
+import { Component } from "react";
+
+export class LoginForm extends Component{
+
+    constructor(){
+        super();
+        this.state={
+           formData:{name:"",phone:"",email:"",password:""}      //it will contain all form data
+        }
+        this.handleSubmit=this.handleSubmit.bind(this);
+        this.handleNameChange=this.handleNameChange.bind(this);
+    }
+    handleNameChange(event){
+        console.log(event);
+        console.log(event.target);
+        console.log(event.target.value);
+        this.setState({formData:{name:event.target.value}});
+    }
+    handleSubmit(){
+        console.log(this.state.formData);
+    }
+    render(){
+        return(
+            <div>
+                <input type="text" placeholder="enter name" onChange={this.handleNameChange}></input>
+                <input type="button" value="get Name" onClick={this.handleSubmit}></input>
+            </div>
+        )
+    }
+
+}
+==========================================================
+import { Component } from "react";
+
+export class LoginForm extends Component{
+
+    constructor(){
+        super();
+        this.state={
+           formData:{name:"",phone:"",email:"",password:""}
+        }
+        this.handleSubmit=this.handleSubmit.bind(this);
+        this.handleNameChange=this.handleNameChange.bind(this);
+        this.handlePhoneChange=this.handlePhoneChange.bind(this);
+    }
+    handleNameChange(event){
+        console.log(event);
+        console.log(event.target);
+        console.log(event.target.value);
+        this.setState({formData:{name:event.target.value}});
+    }
+     handlePhoneChange(event){
+        this.setState({formData:{phone:event.target.value}});
+    }
+    handleSubmit(){
+        console.log(this.state.formData);
+    }
+    render(){
+        return(
+            <div>
+                <input type="text" placeholder="enter name" onChange={this.handleNameChange}></input>
+                 <input type="text" placeholder="enter phone" onChange={this.handlePhoneChange}></input>
+                <input type="button" value="get Name" onClick={this.handleSubmit}></input>
+            </div>
+        )
+    }
+
+}
+======================================
+we have to persist old form data and along with current form data.
+     handlePhoneChange(event){
+        this.setState({formData:{name:this.state.formData.name,phone:event.target.value}});
+    }
+
+
+
+
+solution is 
+this.setState({formData:{...this.state.formData,phone:event.target.value}});
+    
+
+
+import { Component } from "react";
+
+export class LoginForm extends Component{
+
+    constructor(){
+        super();
+        this.state={
+           formData:{name:"",phone:"",email:"",password:""}
+        }
+        this.handleSubmit=this.handleSubmit.bind(this);
+        this.handleNameChange=this.handleNameChange.bind(this);
+        this.handlePhoneChange=this.handlePhoneChange.bind(this);
+    }
+    handleNameChange(event){
+        this.setState({formData:{...this.state.formData,name:event.target.value}});
+    }
+     handlePhoneChange(event){
+        this.setState({formData:{...this.state.formData,phone:event.target.value}});
+    }
+    handleSubmit(){
+        console.log(this.state.formData);
+    }
+    render(){
+        return(
+            <div>
+                <input type="text" placeholder="enter name" onChange={this.handleNameChange}></input>
+                 <input type="text" placeholder="enter phone" onChange={this.handlePhoneChange}></input>
+                <input type="button" value="get Name" onClick={this.handleSubmit}></input>
+            </div>
+        )
+    }
+
+}
+==================================================================
+
+
+
+==>now we have to decide,the value which we are getting from the field,in which key we have to assign.
+for that we have to make use of generating dynamic key.(the field on which user has done operation ,accordingly the key should be changed)
+
+ex:var keyname='marks';
+var obj={id:101,name:'ramesh',:90};
+//the value of the variable should become the key of third key-value pair
+
+var obj={id:101,name:'ramesh',[keyname]:90}; //the value of the variable keyname should become the key
+
+==>
+var keyname='xyz';
+var obj={id:101,name:'rahul',keyname:90};
+console.log(obj);
+
+=======================================================================
+import { Component } from "react";
+
+export class LoginForm extends Component{
+
+    constructor(){
+        super();
+        this.state={
+           formData:{name:"",phone:"",email:"",password:""}
+        }
+        this.handleSubmit=this.handleSubmit.bind(this);
+        this.handleChange=this.handleChange.bind(this);
+       
+    }
+    handleChange(event){
+        this.setState({formData:
+            {...this.state.formData,
+                [event.target.name]:event.target.value}});
+    }
+    
+    handleSubmit(){
+        console.log(this.state.formData);
+    }
+    render(){
+
+        return(
+            <div>
+                <input type="text" placeholder="enter name" name="name" onChange={this.handleChange}></input>
+                 <input type="text" placeholder="enter phone" name="phone" onChange={this.handleChange}></input>
+                <input type="button" value="get Name" onClick={this.handleSubmit}></input>
+            </div>
+        )
+    }
+
+}
+==============================================================================
+Function component
+
+import { useState } from "react"
+
+export function LoginForm() {
+    const [formData,setFormData]=useState({name:"",phone:"",email:""});
+ const handleChange=(e)=>{
+    setFormData({...formData,[e.target.name]:e.target.value});
+ }
+ const handleSubmit=()=>{
+    console.log(formData);
+ }
+
+        return(
+            <div>
+                <input type="text" placeholder="enter name" name="name" onChange={handleChange}></input>
+                 <input type="text" placeholder="enter phone" name="phone" onChange={handleChange}></input>
+                <input type="button" value="get Name" onClick={handleSubmit}></input>
+            </div>
+        )
+    }
+
+
+============================================
+import logo from './logo.svg';
+import './App.css';
+import { LoginForm } from './LoginForm';
+
+
+function App() {
+  return (
+     <div>
+    <LoginForm></LoginForm>
+     </div>
+  );
+}
+
+export default App;
+
+=======================================================
+Routing :
+moving between pages
+==>in SPA,components will be changed onto a single html file.and on the same html file according to url,different different componnet will going to display.
+==>based on URL we need to open a component and during this process our webpage should not take a reload.
+
+===========================================================
+http://localhost:3000/  -->Base url on which Home component will open
+/about -->About component  (to visit About component,we should redirect the user on /about
+/contact -->Contact Component
+
+==============================================
+usecase: create navbar which will contain three menu items  when user will click on any menu item ,browser should redirect the user on specific url to display specific Components
+
+
+
+
+
+
+
+export function Home(){
+    return(
+        <div>
+            <h1>welcome to our app</h1>
+            <p>This is our dummy app for routing.This is our dummy app for routingThis is our dummy app for routingThis is our dummy app for routingThis is our dummy app for routingThis is our dummy app for routingThis is our dummy app for routingThis is our dummy app for routingvvvThis is our dummy app for routingThis is our dummy app for routing </p>
+        </div>
+    )
+}
+===================================================
+export function About(){
+    return(
+        <div>
+            <h1>Know about us</h1>
+            <h3>vision</h3>
+            <p>This is our dummy app for routing.This is our dummy app for routingThis is our dummy app for routingThis is our dummy app for routingThis is our dummy app for routingThis is our dummy app for routingThis is our dummy app for routingThis is our dummy app for routingvvvThis is our dummy app for routingThis is our dummy app for routing </p>
+            <h3>vision</h3>
+            <p>This is our dummy app for routing.This is our dummy app for routingThis is our dummy app for routingThis is our dummy app for routingThis is our dummy app for routingThis is our dummy app for routingThis is our dummy app for routingThis is our dummy app for routingvvvThis is our dummy app for routingThis is our dummy app for routing </p>
+        
+        </div>
+    )
+}
+================================================
+export function Contact(){
+    return(
+        <div>
+            <h1>connect with us</h1>
+            <h3>email</h3>
+            <p>admin@myapp.com</p>
+            <h3>phone</h3>
+            <p>+91-7788998877</p>
+        </div>
+    )
+}
+====================================
+
+=========================================================
+http://localhost:3000/   on this base url open Home component
+/about
+.contact
+
+===============================================================================
+
+export function NavigationBar(){
+    return(
+        
+        <div>
+           <p> <a href="/">Home</a></p>
+           <p><a href="/about">About</a></p>
+           <p><a href="/contact">Contact</a></p>
+            
+            
+        </div>
+    )
+}
+===============================================================================
+
+import { Link } from "react-router-dom";
+
+export function NavigationBar(){
+    return(
+        
+         <div>
+            <p><Link to={'/'}>Home</Link></p>
+            <p><Link to={'/about'}>About</Link></p>
+              <p><Link to={'/contact'}>Contact</Link></p>
+        </div>
+
+    )
+}
+=================================================
+==>onto each and every component Navigationbar should be there,but which component should be display under navigationbar that will be decided by using routing.
+
+==>To define routing mechanism,we need to write for which URL,which component should be display for this we need to write mapping.we have to map the url with component.
+==>routing mechanism is not given by react js, therefore we need to install third party module i.e 
+react-router-dom(mounting and unmounting will be done by react-router-dom)
+
+==>react-router-dom  module is providing certain components using which we can define routing
+>>npm i react-router-dom
+
+
+==>components provided by this module
+1)<BrowserRouter> ->if we want to have routing(mounting and unmounting) inside our react application then, we have to encapsulate all of the component(entire application) into BrowserRouting component
+2)Routes ->it will contain all the different different routes
+		-> it will be the parent element for multiple Route Components
+3)Route-->it is the component in which we have to map a component with a url.it will specify on which url, we have to open which component.
+
+====================================================
+import { NavigationBar } from './Components/NavigationBar';
+import {BrowserRouter,Route,Routes} from "react-router-dom"
+import { Home } from './Components/Home';
+import { Contact } from './Components/Contact';
+import { About } from './Components/About';
+function App() {
+  return (
+    <BrowserRouter>
+     <div>
+      <NavigationBar></NavigationBar>
+      <Routes>
+        <Route path="/" element={<Home/>}></Route>
+        <Route path="/about" element={<About/>}></Route>
+        <Route path="/contact" element={<Contact/>}></Route>
+      </Routes>
+     </div>
+     </BrowserRouter>
+  );
+}
+
+export default App;
+===================================================
+
+Link component: alternate for the anchor tag.
+==>It will prevent browser to take reload
+
+import { Link } from "react-router-dom";
+
+export function NavigationBar(){
+    return(
+        
+        <div>
+            <p><Link to={'/'}>Home</Link></p>
+            <p><Link to={'/about'}>About</Link></p>
+              <p><Link to={'/contact'}>Contact</Link></p>
+        </div>
+    )
+}
+====================================================================
+creating html file
+linking css and js for bootstraping
+
+<div class="container">
+</div>
+
+install react-bootstrap library (integration of react and bootstrap)
+==>we dont have to link css and js for bootstraping
+==>we will get predefined component
+<Container>
+<Row>
+<Col>
+<Alert>
+
+>>npm install react-bootstrap bootstrap
+
+note:bootstrap css has not shipped into react js so import in index.js or App.js
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+=========================================================================
+
+
+import {Container,Alert,Button} from "react-bootstrap"
+export function Home(){
+    return(
+        <Container>
+            <Alert variant="success">welcome to our app</Alert>
+            <p>This is 
+                our dummy app for routing.This is our dummy app for routingThis is our dummy app for routingThis is our dummy app for routingThis is our dummy app for routingThis is our dummy app for routingThis is our dummy app for routingThis is our dummy app for routingvvvThis is our dummy app for routingThis is our dummy app for routing </p>
+            <button variant="primary">Click me</button>
+        </Container>
+         
+    )
+}
+==================================================
+import { Container,Alert,Col,Row } from "react-bootstrap"
+export function About(){
+    return(
+        <div>
+            <Container>
+                <Alert variant="success">Know about US</Alert>
+                <Row>
+                    <Col lg={6}>
+                    <Alert variant="primary">Vision</Alert>
+                     <p>This is our dummy app for routing.This is our dummy app for routingThis is our dummy app for routingThis is our dummy app for routingThis is our dummy app for routingThis is our dummy app for routingThis is our dummy app for routingThis is our dummy app for routingvvvThis is our dummy app for routingThis is our dummy app for routing </p>
+        
+
+                    </Col>
+                    <Col lg={6}>
+                    <Alert variant="danger">Mission</Alert>
+                     <p>This is our dummy app for routing.This is our dummy app for routingThis is our dummy app for routingThis is our dummy app for routingThis is our dummy app for routingThis is our dummy app for routingThis is our dummy app for routingThis is our dummy app for routingvvvThis is our dummy app for routingThis is our dummy app for routing </p>
+        
+
+                    </Col>
+                </Row>
+            </Container>
+           
+        </div>
+    )
+}
+===============================================================
+import { NavigationBar } from './Components/NavigationBar';
+import {BrowserRouter,Route,Routes} from "react-router-dom"
+import { Home } from './Components/Home';
+import { Contact } from './Components/Contact';
+import { About } from './Components/About';
+import 'bootstrap/dist/css/bootstrap.min.css';
+function App() {
+  return (
+    <BrowserRouter>
+     <div>
+      <NavigationBar></NavigationBar>
+      <Routes>
+        <Route path="/" element={<Home/>}></Route>
+        <Route path="/about" element={<About/>}></Route>
+        <Route path="/contact" element={<Contact/>}></Route>
+      </Routes>
+     </div>
+     </BrowserRouter>
+  );
+}
+
+export default App;
+=============================================================
+
+CREATE NEWS API
+
+>>npm i react-router-dom react-bootstrap bootstrap 
+
+
+
+import {Navbar,Container,Nav} from "react-bootstrap"
+export function NavBar(){
+    
+   return(
+    <Navbar expand="lg" bg="dark" data-bs-theme="dark">
+      <Container>
+        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="/">TOP HEADLINES</Nav.Link>
+            <Nav.Link href="/all-news">All News</Nav.Link>
+            <Nav.Link href="/weather">Weather</Nav.Link>
+         
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+   )
+}
+
+
+
+===================================================================
+
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { NavBar } from './Components/NavBar';
+import { TopHeadlines } from './Components/TopHeadlines';
+import { AllNews } from './Components/AllNews';
+import { Weather } from './Components/Weather';
+import {BrowserRouter,Route,Routes} from "react-router-dom"
+
+function App() {
+  return (
+    <BrowserRouter>
+      <NavBar></NavBar>
+    <Routes>
+      <Route path="/" element={<TopHeadlines/>}></Route>
+      <Route path="/all-news" element={<AllNews/>}></Route>
+      <Route path="/weather" element={<Weather/>}></Route>
+    </Routes>
+    </BrowserRouter>
+     
+    
+  );
+}
+
+export default App;
+
+============================================
+import { Container ,Alert} from "react-bootstrap";
+
+export function AllNews(){
+    return(
+        <Container className="mt-3">
+            <Container>
+<Alert variant="primary"><h1>view all types of nes based on your own topic</h1></Alert>
+<p>This is realtime news and weather app</p>
+            </Container>
+            <Container>
+
+            </Container>
+
+        </Container>
+    )
+
+}
+=============================================
+==========================================
+import { Container,Alert } from "react-bootstrap";
+
+export function TopHeadlines(){
+    return(
+        <Container className="mt-3">
+            <Container>
+<Alert variant="primary"><h1>welcome to Top headlines</h1></Alert>
+<p>This is realtime news and weather app</p>
+            </Container>
+            <Container>
+
+            </Container>
+
+        </Container>
+    )
+
+}
+====================================
+import { Container,Alert } from "react-bootstrap";
+
+export function Weather(){
+    return(
+        <Container className="mt-3">
+            <Container>
+<Alert variant="primary"><h1>view weather for your mentioned city</h1></Alert>
+<p>This is realtime news and weather app</p>
+            </Container>
+            <Container>
+
+            </Container>
+
+        </Container>
+    )
+
+}
+==================================================
+page is taking reload
+
+google react-router-bootstrap
+
+>>npm i react-router-bootstrap
+>>npm install react-router-dom@6
+
+==>Now import LinkContainer from react-router-bootstrap.
+
+eg
+ <LinkContainer to="/url">
+      <Nav.Link>msg to be display on link</Nav.Link>
+      </LinkContainer>
+
+
+=========================================
+    import { Container,Alert,Col,Row,Card } from "react-bootstrap";
+import {useState,useEffect} from "react";
+
+
+export function TopHeadlines(){
+    const [newsArticles,setNewsArticles]=useState([]);
+     useEffect(()=>{
+        fetch('https://newsapi.org/v2/top-headlines?country=us&apiKey=2f74f2e347f24ac8b36a54a6a862e4d7').then((response)=>{
+            response.json().then((data)=>{
+                console.log(data);
+             console.log(data.articles);
+             setNewsArticles(data.articles);
+
+            })
+
+        }).catch((error)=>{
+            console.log(error);
+        })
+
+
+    },[]);
+
+
+      return(
+        <Container className="mt-3">
+            <Container>
+<Alert variant="primary"><h1>welcome to Top headlines</h1></Alert>
+<p>This is realtime news and weather app</p>
+            </Container>
+            <Container className="mt-3">
+                <Row>
+                    {
+                    newsArticles.map((article)=>{
+                            return(
+                                <Col lg={6}>
+                                   <Card>
+      <Card.Img variant="top" src={article.urlToImage} />
+      <Card.Body>
+        <Card.Title>{article.Title}</Card.Title>
+        <Card.Text>
+          {article.description}
+        </Card.Text>
+        
+      </Card.Body>
+    </Card>
+                                </Col>
+                            )
+                    })
+                }
+
+                    
+                </Row>
+
+            </Container>
+
+        </Container>
+    )
+
+}
+
+
