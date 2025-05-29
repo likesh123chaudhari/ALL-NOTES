@@ -1,0 +1,267 @@
+======================================================================
+List and Keys in Reactjs
+
+How to render list in React js
+export function ListItem(){
+    var Fruitname=['mango','apple','banana'];
+    return(
+
+        <div>
+            <ul>
+                {
+            Fruitname.map((item)=>
+            <li>{item}</li>)
+        
+                }
+             
+            </ul>
+        </div>
+    )
+}
+
+==>whenever the list is rendered ,we will get warning on console i.e Each child in a list should have a unique "key" prop.
+==========================================================================
+
+How List works?
+list1=['A','B','C']
+
+list2=['D',A','B','C']
+
+==>react renders data from virtual dom and according to diffy algorithm it  will update the entire application ,which is not orignal behaviour of react application.To avoids this,we will assign keys to every list items for identification.
+=======================================================================================
+
+keys help react identify which items have changed, are added or are removed. keys should be given to the elements inside the array to give the elements a stable identify.A key serves as a unique identifier in React, helping to track which items in a list have changed, been updated, or removed. It is particularly useful when dynamically creating components or when users modify the list. 
+
+
+export function ListItem(){
+    var Fruitname=['mango','apple','banana'];
+    return(
+
+        <div>
+            <ul>
+                {
+            Fruitname.map((item)=>
+            <li key={item}>{item}</li>)  //when the unique elements are present
+
+        
+                }
+             
+            </ul>
+        </div>
+    )
+}
+
+========================================
+Assigning keys to the list
+
+When rendering a list, you need to assign a unique key prop to each element in the list. This helps React identify which elements have changed, been added, or been removed.
+
+Syntax
+
+const numbers = [1, 2, 3, 4, 5,5,2];
+const updatedNums = numbers.map((number, index) =>
+    <li key={index}>
+        {number}
+    </li>
+);
+====================================================
+export function ListItem(){
+    var Fruitname=['mango','apple','banana'];
+    return(
+
+        <div>
+            <ul>
+                {
+            Fruitname.map((item,index)=>
+            <li key={index}>{item} index is {index}</li>)
+
+        
+                }
+             
+            </ul>
+        </div>
+    )
+}
+================================================================
+ Contex Api
+
+==>Context API is used to pass global variables anywhere in the code without the prop drilling. It helps when there is a need for sharing state between a lot of nested components. It is light in weight and easier to use, to create a context just need to call React.createContext(). No need to install other dependencies or third-party libraries like redux for state management.
+==>Why is Context API used?
+Context API solves the problem of prop drilling in React. Prop Drilling occurs when data is to be passed between multiple layers before finally sending it to the required component. This makes the application slower. This problem is solved by Context API as it creates global variables to be used throughout the application without any middle components involved. It is also easier to use than React Redux
+
+
+eg:
+A.jsx
+export function A(){
+const[data,setData]=useState("hello);
+return(
+	<B mydata={data} ><B/>
+)
+}
+
+B.jsx
+export function B(prop){
+return(
+	<C mydata={props.mydata}><C/>
+)
+}
+
+C.jsx
+export function C(props){
+return(
+	<D mydata={props.mydata}><D/>
+)
+}
+
+D.jsx
+export function D(props){
+return(
+	<h1>{props.mydata}</h1>
+)
+}
+
+inorder to pass a data to any component in the hierarchy we are passing the data into each components props.this is known as props drilling.
+============================================================
+Another example on prop drilling:
+
+import {Child_A} from './Child_A'
+function App() {
+  const name="sampada"
+  return (
+    <>
+   <Child_A name={name}/>
+   </>
+  );
+}
+
+export default App;
+
+
+
+
+========================================
+import {Child_B} from './Child_B'
+export function Child_A({name}) {
+  
+  return (
+    
+   <Child_B name={name}></Child_B>
+  );
+}
+
+=====================================
+
+export function Child_B({name}) {
+  
+  return (
+    
+   <h1>{name}</h1>
+  );
+}
+
+
+============================
+Context API
+ Context API is a mechanism that allows you to share specific information (like state or functions) with multiple components, eliminating the need for prop drilling.
+
+create,provider,consumer
+
+
+import {Child_A} from './Child_A'
+import { createContext } from 'react';
+import { Child_B } from './Child_B';
+const data=createContext();
+function App() {
+  const name="sampada"
+  return (
+    <div>
+      <data.Provider value={name}>
+        <Child_B/>
+      </data.Provider>
+ 
+   </div>
+  );
+}
+
+export default App;
+export {data};
+=====================================
+
+import {Child_B} from './Child_B'
+export function Child_A() {
+  
+  return (
+    
+   <Child_B></Child_B>
+  );
+}
+
+==========================================
+import {data} from './App'
+export function Child_B() {
+  
+  return (
+   <div>
+<data.Consumer>
+    {
+        (name)=>{
+            return(
+                <h1>My name is {name}</h1>
+            )
+        }
+    }
+</data.Consumer>
+   </div> 
+   
+  );
+}
+===========================================================
+Condition Rendering in React JS
+1)if/else
+2)Element variables
+3)Ternary operator
+
+import { useState } from "react"
+
+export function AgeValidate(){
+    const[isAgeValid,setIAgeValid]=useState(false);
+    /*if(isAgeValid){
+    return(
+        <div>
+            you can vote
+        </div>
+
+    )
+    }
+    else{
+        return(
+        <div>
+            you can not vote
+        </div>
+
+    )
+    }*/
+
+
+   /*var age;
+   if(isAgeValid){
+        age=<div>you can vote</div>
+   }
+   else{
+    age=<div>you cannot vote</div>
+   }
+    return age;*/
+
+   
+   /* return(
+        <div>
+          { isAgeValid? <div>you can vote</div>:<div>you cannot vote</div>}
+        </div>
+    )*/
+
+        
+}
+
+=============================================================
+
+

@@ -921,7 +921,8 @@ factorial and sum() is dependent on each other.
 <body>
     <script>
                 
-        setTimeout((n)=>{
+        setTimeout((n)=>
+	{
             console.log("calculating factorial");
             var f=1;
             for(i=1;i<=n;i++)
@@ -929,11 +930,13 @@ factorial and sum() is dependent on each other.
                 f=f*i;
             }
             console.log("factorial is ",f);
-                setTimeout((m)=>{
+                setTimeout((m)=>
+		{
                     console.log("calculating sum");
                     var z=f+m;
                     console.log("sum is ",z);
-                    setTimeout((r)=>{
+                    setTimeout((r)=>
+		    {
                         console.log("calculating square");
                         var res=z*z;
                         console.log("square is",res);
